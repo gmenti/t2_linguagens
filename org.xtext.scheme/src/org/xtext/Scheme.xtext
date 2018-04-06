@@ -3,7 +3,19 @@ grammar org.xtext.Scheme with org.eclipse.xtext.common.Terminals
 generate scheme "http://www.xtext.org/Scheme"
 
 Model:
-	greetings+=Greeting*;
+	functions+=Function*;
 	
-Greeting:
-	'Hello' name=ID '!';
+terminal SCHEME_ID: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-')*;
+terminal OPERATOR: '+' | '-' | '*' | '/';
+
+FunctionId:
+	OPERATOR | SCHEME_ID
+;
+
+FunctionParam:
+	INT | ID
+;
+
+Function:
+	'(' id=FunctionId params+=FunctionParam* ')'	
+;

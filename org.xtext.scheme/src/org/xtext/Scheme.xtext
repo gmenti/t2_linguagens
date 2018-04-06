@@ -1,0 +1,9 @@
+grammar org.xtext.Scheme with org.eclipse.xtext.common.Terminals
+
+generate scheme "http://www.xtext.org/Scheme"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';

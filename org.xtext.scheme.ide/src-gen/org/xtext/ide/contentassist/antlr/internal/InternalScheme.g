@@ -149,6 +149,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleBoolean
+entryRuleBoolean
+:
+{ before(grammarAccess.getBooleanRule()); }
+	 ruleBoolean
+{ after(grammarAccess.getBooleanRule()); } 
+	 EOF 
+;
+
+// Rule Boolean
+ruleBoolean 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getBooleanAccess().getAlternatives()); }
+		(rule__Boolean__Alternatives)
+		{ after(grammarAccess.getBooleanAccess().getAlternatives()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__FunctionId__Alternatives
 	@init {
 		int stackSize = keepStackSize();
@@ -164,6 +189,12 @@ rule__FunctionId__Alternatives
 		{ before(grammarAccess.getFunctionIdAccess().getSCHEME_IDTerminalRuleCall_1()); }
 		RULE_SCHEME_ID
 		{ after(grammarAccess.getFunctionIdAccess().getSCHEME_IDTerminalRuleCall_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFunctionIdAccess().getBooleanParserRuleCall_2()); }
+		ruleBoolean
+		{ after(grammarAccess.getFunctionIdAccess().getBooleanParserRuleCall_2()); }
 	)
 ;
 finally {
@@ -185,6 +216,33 @@ rule__FunctionParam__Alternatives
 		{ before(grammarAccess.getFunctionParamAccess().getIDTerminalRuleCall_1()); }
 		RULE_ID
 		{ after(grammarAccess.getFunctionParamAccess().getIDTerminalRuleCall_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFunctionParamAccess().getBooleanParserRuleCall_2()); }
+		ruleBoolean
+		{ after(grammarAccess.getFunctionParamAccess().getBooleanParserRuleCall_2()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Boolean__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBooleanAccess().getTKeyword_0()); }
+		'#t'
+		{ after(grammarAccess.getBooleanAccess().getTKeyword_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBooleanAccess().getFKeyword_1()); }
+		'#f'
+		{ after(grammarAccess.getBooleanAccess().getFKeyword_1()); }
 	)
 ;
 finally {
@@ -237,7 +295,7 @@ rule__Function__Group__1__Impl
 :
 (
 	{ before(grammarAccess.getFunctionAccess().getIdAssignment_1()); }
-	(rule__Function__IdAssignment_1)
+	(rule__Function__IdAssignment_1)*
 	{ after(grammarAccess.getFunctionAccess().getIdAssignment_1()); }
 )
 ;

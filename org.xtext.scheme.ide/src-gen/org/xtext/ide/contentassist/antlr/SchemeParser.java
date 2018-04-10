@@ -33,6 +33,7 @@ public class SchemeParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getFunctionIdAccess().getAlternatives(), "rule__FunctionId__Alternatives");
 					put(grammarAccess.getFunctionParamAccess().getAlternatives(), "rule__FunctionParam__Alternatives");
+					put(grammarAccess.getBooleanAccess().getAlternatives(), "rule__Boolean__Alternatives");
 					put(grammarAccess.getFunctionAccess().getGroup(), "rule__Function__Group__0");
 					put(grammarAccess.getModelAccess().getFunctionsAssignment(), "rule__Model__FunctionsAssignment");
 					put(grammarAccess.getFunctionAccess().getIdAssignment_1(), "rule__Function__IdAssignment_1");

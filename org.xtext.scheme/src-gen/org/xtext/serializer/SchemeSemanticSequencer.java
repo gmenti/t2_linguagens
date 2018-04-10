@@ -47,7 +47,7 @@ public class SchemeSemanticSequencer extends AbstractDelegatingSemanticSequencer
 	 *     Function returns Function
 	 *
 	 * Constraint:
-	 *     (id=FunctionId params+=FunctionParam*)
+	 *     ((id=FunctionId+ params+=FunctionParam+) | params+=FunctionParam+)?
 	 */
 	protected void sequence_Function(ISerializationContext context, Function semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

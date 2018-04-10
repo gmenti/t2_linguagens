@@ -179,4 +179,13 @@ class SchemeParsingTest {
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 	}
+	
+	@Test
+	def void mustUnderstandBooleanAsAnOperator() {
+		val result = parseHelper.parse('''
+			(#t)
+		''')
+		Assert.assertNotNull(result)
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+	}
 }

@@ -9,7 +9,7 @@ terminal SCHEME_ID: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-')*;
 terminal OPERATOR: '+' | '-' | '*' | '/' | 'and' | 'or';
 
 FunctionId:
-	OPERATOR | SCHEME_ID
+	OPERATOR | SCHEME_ID | Boolean
 ;
 
 
@@ -18,7 +18,7 @@ FunctionParam:
 ;
 
 Function:
-	'(' id=FunctionId params+=FunctionParam* ')'	
+	'(' id=FunctionId* params+=FunctionParam*  ')'
 ;
 
 Boolean:

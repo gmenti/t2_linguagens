@@ -127,6 +127,17 @@ ruleFunctionId returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToke
 		{
 			newLeafNode(this_SCHEME_ID_1, grammarAccess.getFunctionIdAccess().getSCHEME_IDTerminalRuleCall_1());
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getFunctionIdAccess().getBooleanParserRuleCall_2());
+		}
+		this_Boolean_2=ruleBoolean
+		{
+			$current.merge(this_Boolean_2);
+		}
+		{
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -160,6 +171,17 @@ ruleFunctionParam returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
 		}
 		{
 			newLeafNode(this_ID_1, grammarAccess.getFunctionParamAccess().getIDTerminalRuleCall_1());
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getFunctionParamAccess().getBooleanParserRuleCall_2());
+		}
+		this_Boolean_2=ruleBoolean
+		{
+			$current.merge(this_Boolean_2);
+		}
+		{
+			afterParserOrEnumRuleCall();
 		}
 	)
 ;
@@ -202,7 +224,7 @@ ruleFunction returns [EObject current=null]
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)
+		)*
 		(
 			(
 				{
@@ -225,6 +247,36 @@ ruleFunction returns [EObject current=null]
 		otherlv_3=')'
 		{
 			newLeafNode(otherlv_3, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_3());
+		}
+	)
+;
+
+// Entry rule entryRuleBoolean
+entryRuleBoolean returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getBooleanRule()); }
+	iv_ruleBoolean=ruleBoolean
+	{ $current=$iv_ruleBoolean.current.getText(); }
+	EOF;
+
+// Rule Boolean
+ruleBoolean returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw='#t'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getBooleanAccess().getTKeyword_0());
+		}
+		    |
+		kw='#f'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getBooleanAccess().getFKeyword_1());
 		}
 	)
 ;

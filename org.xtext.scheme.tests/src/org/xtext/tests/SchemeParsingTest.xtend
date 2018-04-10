@@ -192,7 +192,7 @@ class SchemeParsingTest {
 	@Test
 	def void mustUnderstandNotBooleanOperationsWithNewOperationsInside() {
 		val result = parseHelper.parse('''
-			(or #t (and not #t #f))
+			(or #t (and #f #t))
 		''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalSchemeParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_OPERATOR", "RULE_SCHEME_ID", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'('", "')'", "'or'", "'and'", "'not'", "'#t'", "'#f'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_MATH_OPERATOR", "RULE_SCHEME_ID", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'('", "')'", "'not'", "'#t'", "'#f'", "'and'", "'or'"
     };
     public static final int RULE_STRING=8;
     public static final int RULE_SL_COMMENT=10;
@@ -34,10 +34,10 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
     public static final int T__14=14;
     public static final int RULE_SCHEME_ID=5;
     public static final int EOF=-1;
-    public static final int RULE_OPERATOR=4;
     public static final int RULE_ID=7;
     public static final int RULE_WS=11;
     public static final int RULE_ANY_OTHER=12;
+    public static final int RULE_MATH_OPERATOR=4;
     public static final int RULE_INT=6;
     public static final int RULE_ML_COMMENT=9;
 
@@ -236,25 +236,25 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunctionId"
-    // InternalScheme.g:107:1: ruleFunctionId returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_OPERATOR_0= RULE_OPERATOR | this_SCHEME_ID_1= RULE_SCHEME_ID ) ;
+    // InternalScheme.g:107:1: ruleFunctionId returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_MATH_OPERATOR_0= RULE_MATH_OPERATOR | this_SCHEME_ID_1= RULE_SCHEME_ID ) ;
     public final AntlrDatatypeRuleToken ruleFunctionId() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
-        Token this_OPERATOR_0=null;
+        Token this_MATH_OPERATOR_0=null;
         Token this_SCHEME_ID_1=null;
 
 
         	enterRule();
 
         try {
-            // InternalScheme.g:113:2: ( (this_OPERATOR_0= RULE_OPERATOR | this_SCHEME_ID_1= RULE_SCHEME_ID ) )
-            // InternalScheme.g:114:2: (this_OPERATOR_0= RULE_OPERATOR | this_SCHEME_ID_1= RULE_SCHEME_ID )
+            // InternalScheme.g:113:2: ( (this_MATH_OPERATOR_0= RULE_MATH_OPERATOR | this_SCHEME_ID_1= RULE_SCHEME_ID ) )
+            // InternalScheme.g:114:2: (this_MATH_OPERATOR_0= RULE_MATH_OPERATOR | this_SCHEME_ID_1= RULE_SCHEME_ID )
             {
-            // InternalScheme.g:114:2: (this_OPERATOR_0= RULE_OPERATOR | this_SCHEME_ID_1= RULE_SCHEME_ID )
+            // InternalScheme.g:114:2: (this_MATH_OPERATOR_0= RULE_MATH_OPERATOR | this_SCHEME_ID_1= RULE_SCHEME_ID )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==RULE_OPERATOR) ) {
+            if ( (LA2_0==RULE_MATH_OPERATOR) ) {
                 alt2=1;
             }
             else if ( (LA2_0==RULE_SCHEME_ID) ) {
@@ -268,14 +268,14 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
             }
             switch (alt2) {
                 case 1 :
-                    // InternalScheme.g:115:3: this_OPERATOR_0= RULE_OPERATOR
+                    // InternalScheme.g:115:3: this_MATH_OPERATOR_0= RULE_MATH_OPERATOR
                     {
-                    this_OPERATOR_0=(Token)match(input,RULE_OPERATOR,FOLLOW_2); 
+                    this_MATH_OPERATOR_0=(Token)match(input,RULE_MATH_OPERATOR,FOLLOW_2); 
 
-                    			current.merge(this_OPERATOR_0);
+                    			current.merge(this_MATH_OPERATOR_0);
                     		
 
-                    			newLeafNode(this_OPERATOR_0, grammarAccess.getFunctionIdAccess().getOPERATORTerminalRuleCall_0());
+                    			newLeafNode(this_MATH_OPERATOR_0, grammarAccess.getFunctionIdAccess().getMATH_OPERATORTerminalRuleCall_0());
                     		
 
                     }
@@ -381,8 +381,8 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
                 alt3=2;
                 }
                 break;
-            case 18:
-            case 19:
+            case 16:
+            case 17:
                 {
                 alt3=3;
                 }
@@ -531,10 +531,10 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
             int alt5=2;
             int LA5_0 = input.LA(1);
 
-            if ( ((LA5_0>=RULE_OPERATOR && LA5_0<=RULE_SCHEME_ID)) ) {
+            if ( ((LA5_0>=RULE_MATH_OPERATOR && LA5_0<=RULE_SCHEME_ID)) ) {
                 alt5=1;
             }
-            else if ( (LA5_0==EOF||(LA5_0>=13 && LA5_0<=19)) ) {
+            else if ( ((LA5_0>=15 && LA5_0<=19)) ) {
                 alt5=2;
             }
             else {
@@ -587,7 +587,7 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
                         int alt4=2;
                         int LA4_0 = input.LA(1);
 
-                        if ( ((LA4_0>=RULE_INT && LA4_0<=RULE_ID)||(LA4_0>=18 && LA4_0<=19)) ) {
+                        if ( ((LA4_0>=RULE_INT && LA4_0<=RULE_ID)||(LA4_0>=16 && LA4_0<=17)) ) {
                             alt4=1;
                         }
 
@@ -739,183 +739,171 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanOperation"
-    // InternalScheme.g:275:1: ruleBooleanOperation returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= 'or' | kw= 'and' )? ( ( (kw= 'not' )? this_Boolean_3= ruleBoolean )* | (kw= '(' this_BooleanOperation_5= ruleBooleanOperation kw= ')' ) ) ) ;
+    // InternalScheme.g:275:1: ruleBooleanOperation returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (this_BoolOperator_0= ruleBoolOperator )? ( (kw= 'not' )? this_Boolean_2= ruleBoolean )+ (kw= '(' this_BooleanOperation_4= ruleBooleanOperation kw= ')' )* ) ;
     public final AntlrDatatypeRuleToken ruleBooleanOperation() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
         Token kw=null;
-        AntlrDatatypeRuleToken this_Boolean_3 = null;
+        AntlrDatatypeRuleToken this_BoolOperator_0 = null;
 
-        AntlrDatatypeRuleToken this_BooleanOperation_5 = null;
+        AntlrDatatypeRuleToken this_Boolean_2 = null;
+
+        AntlrDatatypeRuleToken this_BooleanOperation_4 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalScheme.g:281:2: ( ( (kw= 'or' | kw= 'and' )? ( ( (kw= 'not' )? this_Boolean_3= ruleBoolean )* | (kw= '(' this_BooleanOperation_5= ruleBooleanOperation kw= ')' ) ) ) )
-            // InternalScheme.g:282:2: ( (kw= 'or' | kw= 'and' )? ( ( (kw= 'not' )? this_Boolean_3= ruleBoolean )* | (kw= '(' this_BooleanOperation_5= ruleBooleanOperation kw= ')' ) ) )
+            // InternalScheme.g:281:2: ( ( (this_BoolOperator_0= ruleBoolOperator )? ( (kw= 'not' )? this_Boolean_2= ruleBoolean )+ (kw= '(' this_BooleanOperation_4= ruleBooleanOperation kw= ')' )* ) )
+            // InternalScheme.g:282:2: ( (this_BoolOperator_0= ruleBoolOperator )? ( (kw= 'not' )? this_Boolean_2= ruleBoolean )+ (kw= '(' this_BooleanOperation_4= ruleBooleanOperation kw= ')' )* )
             {
-            // InternalScheme.g:282:2: ( (kw= 'or' | kw= 'and' )? ( ( (kw= 'not' )? this_Boolean_3= ruleBoolean )* | (kw= '(' this_BooleanOperation_5= ruleBooleanOperation kw= ')' ) ) )
-            // InternalScheme.g:283:3: (kw= 'or' | kw= 'and' )? ( ( (kw= 'not' )? this_Boolean_3= ruleBoolean )* | (kw= '(' this_BooleanOperation_5= ruleBooleanOperation kw= ')' ) )
+            // InternalScheme.g:282:2: ( (this_BoolOperator_0= ruleBoolOperator )? ( (kw= 'not' )? this_Boolean_2= ruleBoolean )+ (kw= '(' this_BooleanOperation_4= ruleBooleanOperation kw= ')' )* )
+            // InternalScheme.g:283:3: (this_BoolOperator_0= ruleBoolOperator )? ( (kw= 'not' )? this_Boolean_2= ruleBoolean )+ (kw= '(' this_BooleanOperation_4= ruleBooleanOperation kw= ')' )*
             {
-            // InternalScheme.g:283:3: (kw= 'or' | kw= 'and' )?
-            int alt6=3;
+            // InternalScheme.g:283:3: (this_BoolOperator_0= ruleBoolOperator )?
+            int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==15) ) {
+            if ( ((LA6_0>=18 && LA6_0<=19)) ) {
                 alt6=1;
-            }
-            else if ( (LA6_0==16) ) {
-                alt6=2;
             }
             switch (alt6) {
                 case 1 :
-                    // InternalScheme.g:284:4: kw= 'or'
+                    // InternalScheme.g:284:4: this_BoolOperator_0= ruleBoolOperator
                     {
-                    kw=(Token)match(input,15,FOLLOW_7); 
 
-                    				current.merge(kw);
-                    				newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getOrKeyword_0_0());
+                    				newCompositeNode(grammarAccess.getBooleanOperationAccess().getBoolOperatorParserRuleCall_0());
                     			
-
-                    }
-                    break;
-                case 2 :
-                    // InternalScheme.g:290:4: kw= 'and'
-                    {
-                    kw=(Token)match(input,16,FOLLOW_7); 
-
-                    				current.merge(kw);
-                    				newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getAndKeyword_0_1());
-                    			
-
-                    }
-                    break;
-
-            }
-
-            // InternalScheme.g:296:3: ( ( (kw= 'not' )? this_Boolean_3= ruleBoolean )* | (kw= '(' this_BooleanOperation_5= ruleBooleanOperation kw= ')' ) )
-            int alt9=2;
-            int LA9_0 = input.LA(1);
-
-            if ( (LA9_0==EOF||LA9_0==14||(LA9_0>=17 && LA9_0<=19)) ) {
-                alt9=1;
-            }
-            else if ( (LA9_0==13) ) {
-                alt9=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 9, 0, input);
-
-                throw nvae;
-            }
-            switch (alt9) {
-                case 1 :
-                    // InternalScheme.g:297:4: ( (kw= 'not' )? this_Boolean_3= ruleBoolean )*
-                    {
-                    // InternalScheme.g:297:4: ( (kw= 'not' )? this_Boolean_3= ruleBoolean )*
-                    loop8:
-                    do {
-                        int alt8=2;
-                        int LA8_0 = input.LA(1);
-
-                        if ( ((LA8_0>=17 && LA8_0<=19)) ) {
-                            alt8=1;
-                        }
-
-
-                        switch (alt8) {
-                    	case 1 :
-                    	    // InternalScheme.g:298:5: (kw= 'not' )? this_Boolean_3= ruleBoolean
-                    	    {
-                    	    // InternalScheme.g:298:5: (kw= 'not' )?
-                    	    int alt7=2;
-                    	    int LA7_0 = input.LA(1);
-
-                    	    if ( (LA7_0==17) ) {
-                    	        alt7=1;
-                    	    }
-                    	    switch (alt7) {
-                    	        case 1 :
-                    	            // InternalScheme.g:299:6: kw= 'not'
-                    	            {
-                    	            kw=(Token)match(input,17,FOLLOW_8); 
-
-                    	            						current.merge(kw);
-                    	            						newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getNotKeyword_1_0_0());
-                    	            					
-
-                    	            }
-                    	            break;
-
-                    	    }
-
-
-                    	    					newCompositeNode(grammarAccess.getBooleanOperationAccess().getBooleanParserRuleCall_1_0_1());
-                    	    				
-                    	    pushFollow(FOLLOW_9);
-                    	    this_Boolean_3=ruleBoolean();
-
-                    	    state._fsp--;
-
-
-                    	    					current.merge(this_Boolean_3);
-                    	    				
-
-                    	    					afterParserOrEnumRuleCall();
-                    	    				
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop8;
-                        }
-                    } while (true);
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalScheme.g:317:4: (kw= '(' this_BooleanOperation_5= ruleBooleanOperation kw= ')' )
-                    {
-                    // InternalScheme.g:317:4: (kw= '(' this_BooleanOperation_5= ruleBooleanOperation kw= ')' )
-                    // InternalScheme.g:318:5: kw= '(' this_BooleanOperation_5= ruleBooleanOperation kw= ')'
-                    {
-                    kw=(Token)match(input,13,FOLLOW_10); 
-
-                    					current.merge(kw);
-                    					newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getLeftParenthesisKeyword_1_1_0());
-                    				
-
-                    					newCompositeNode(grammarAccess.getBooleanOperationAccess().getBooleanOperationParserRuleCall_1_1_1());
-                    				
-                    pushFollow(FOLLOW_6);
-                    this_BooleanOperation_5=ruleBooleanOperation();
+                    pushFollow(FOLLOW_4);
+                    this_BoolOperator_0=ruleBoolOperator();
 
                     state._fsp--;
 
 
-                    					current.merge(this_BooleanOperation_5);
-                    				
+                    				current.merge(this_BoolOperator_0);
+                    			
 
-                    					afterParserOrEnumRuleCall();
-                    				
-                    kw=(Token)match(input,14,FOLLOW_2); 
-
-                    					current.merge(kw);
-                    					newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getRightParenthesisKeyword_1_1_2());
-                    				
-
-                    }
-
+                    				afterParserOrEnumRuleCall();
+                    			
 
                     }
                     break;
 
             }
+
+            // InternalScheme.g:295:3: ( (kw= 'not' )? this_Boolean_2= ruleBoolean )+
+            int cnt8=0;
+            loop8:
+            do {
+                int alt8=2;
+                int LA8_0 = input.LA(1);
+
+                if ( ((LA8_0>=15 && LA8_0<=17)) ) {
+                    alt8=1;
+                }
+
+
+                switch (alt8) {
+            	case 1 :
+            	    // InternalScheme.g:296:4: (kw= 'not' )? this_Boolean_2= ruleBoolean
+            	    {
+            	    // InternalScheme.g:296:4: (kw= 'not' )?
+            	    int alt7=2;
+            	    int LA7_0 = input.LA(1);
+
+            	    if ( (LA7_0==15) ) {
+            	        alt7=1;
+            	    }
+            	    switch (alt7) {
+            	        case 1 :
+            	            // InternalScheme.g:297:5: kw= 'not'
+            	            {
+            	            kw=(Token)match(input,15,FOLLOW_4); 
+
+            	            					current.merge(kw);
+            	            					newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getNotKeyword_1_0());
+            	            				
+
+            	            }
+            	            break;
+
+            	    }
+
+
+            	    				newCompositeNode(grammarAccess.getBooleanOperationAccess().getBooleanParserRuleCall_1_1());
+            	    			
+            	    pushFollow(FOLLOW_7);
+            	    this_Boolean_2=ruleBoolean();
+
+            	    state._fsp--;
+
+
+            	    				current.merge(this_Boolean_2);
+            	    			
+
+            	    				afterParserOrEnumRuleCall();
+            	    			
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt8 >= 1 ) break loop8;
+                        EarlyExitException eee =
+                            new EarlyExitException(8, input);
+                        throw eee;
+                }
+                cnt8++;
+            } while (true);
+
+            // InternalScheme.g:314:3: (kw= '(' this_BooleanOperation_4= ruleBooleanOperation kw= ')' )*
+            loop9:
+            do {
+                int alt9=2;
+                int LA9_0 = input.LA(1);
+
+                if ( (LA9_0==13) ) {
+                    alt9=1;
+                }
+
+
+                switch (alt9) {
+            	case 1 :
+            	    // InternalScheme.g:315:4: kw= '(' this_BooleanOperation_4= ruleBooleanOperation kw= ')'
+            	    {
+            	    kw=(Token)match(input,13,FOLLOW_4); 
+
+            	    				current.merge(kw);
+            	    				newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getLeftParenthesisKeyword_2_0());
+            	    			
+
+            	    				newCompositeNode(grammarAccess.getBooleanOperationAccess().getBooleanOperationParserRuleCall_2_1());
+            	    			
+            	    pushFollow(FOLLOW_6);
+            	    this_BooleanOperation_4=ruleBooleanOperation();
+
+            	    state._fsp--;
+
+
+            	    				current.merge(this_BooleanOperation_4);
+            	    			
+
+            	    				afterParserOrEnumRuleCall();
+            	    			
+            	    kw=(Token)match(input,14,FOLLOW_3); 
+
+            	    				current.merge(kw);
+            	    				newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getRightParenthesisKeyword_2_2());
+            	    			
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop9;
+                }
+            } while (true);
 
 
             }
@@ -940,7 +928,7 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBoolean"
-    // InternalScheme.g:344:1: entryRuleBoolean returns [String current=null] : iv_ruleBoolean= ruleBoolean EOF ;
+    // InternalScheme.g:340:1: entryRuleBoolean returns [String current=null] : iv_ruleBoolean= ruleBoolean EOF ;
     public final String entryRuleBoolean() throws RecognitionException {
         String current = null;
 
@@ -948,8 +936,8 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalScheme.g:344:47: (iv_ruleBoolean= ruleBoolean EOF )
-            // InternalScheme.g:345:2: iv_ruleBoolean= ruleBoolean EOF
+            // InternalScheme.g:340:47: (iv_ruleBoolean= ruleBoolean EOF )
+            // InternalScheme.g:341:2: iv_ruleBoolean= ruleBoolean EOF
             {
              newCompositeNode(grammarAccess.getBooleanRule()); 
             pushFollow(FOLLOW_1);
@@ -976,7 +964,7 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBoolean"
-    // InternalScheme.g:351:1: ruleBoolean returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '#t' | kw= '#f' ) ;
+    // InternalScheme.g:347:1: ruleBoolean returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '#t' | kw= '#f' ) ;
     public final AntlrDatatypeRuleToken ruleBoolean() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -986,17 +974,17 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalScheme.g:357:2: ( (kw= '#t' | kw= '#f' ) )
-            // InternalScheme.g:358:2: (kw= '#t' | kw= '#f' )
+            // InternalScheme.g:353:2: ( (kw= '#t' | kw= '#f' ) )
+            // InternalScheme.g:354:2: (kw= '#t' | kw= '#f' )
             {
-            // InternalScheme.g:358:2: (kw= '#t' | kw= '#f' )
+            // InternalScheme.g:354:2: (kw= '#t' | kw= '#f' )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
-            if ( (LA10_0==18) ) {
+            if ( (LA10_0==16) ) {
                 alt10=1;
             }
-            else if ( (LA10_0==19) ) {
+            else if ( (LA10_0==17) ) {
                 alt10=2;
             }
             else {
@@ -1007,9 +995,9 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalScheme.g:359:3: kw= '#t'
+                    // InternalScheme.g:355:3: kw= '#t'
                     {
-                    kw=(Token)match(input,18,FOLLOW_2); 
+                    kw=(Token)match(input,16,FOLLOW_2); 
 
                     			current.merge(kw);
                     			newLeafNode(kw, grammarAccess.getBooleanAccess().getTKeyword_0());
@@ -1018,9 +1006,9 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalScheme.g:365:3: kw= '#f'
+                    // InternalScheme.g:361:3: kw= '#f'
                     {
-                    kw=(Token)match(input,19,FOLLOW_2); 
+                    kw=(Token)match(input,17,FOLLOW_2); 
 
                     			current.merge(kw);
                     			newLeafNode(kw, grammarAccess.getBooleanAccess().getFKeyword_1());
@@ -1049,6 +1037,117 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleBoolean"
 
+
+    // $ANTLR start "entryRuleBoolOperator"
+    // InternalScheme.g:370:1: entryRuleBoolOperator returns [String current=null] : iv_ruleBoolOperator= ruleBoolOperator EOF ;
+    public final String entryRuleBoolOperator() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleBoolOperator = null;
+
+
+        try {
+            // InternalScheme.g:370:52: (iv_ruleBoolOperator= ruleBoolOperator EOF )
+            // InternalScheme.g:371:2: iv_ruleBoolOperator= ruleBoolOperator EOF
+            {
+             newCompositeNode(grammarAccess.getBoolOperatorRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleBoolOperator=ruleBoolOperator();
+
+            state._fsp--;
+
+             current =iv_ruleBoolOperator.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleBoolOperator"
+
+
+    // $ANTLR start "ruleBoolOperator"
+    // InternalScheme.g:377:1: ruleBoolOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'and' | kw= 'or' ) ;
+    public final AntlrDatatypeRuleToken ruleBoolOperator() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalScheme.g:383:2: ( (kw= 'and' | kw= 'or' ) )
+            // InternalScheme.g:384:2: (kw= 'and' | kw= 'or' )
+            {
+            // InternalScheme.g:384:2: (kw= 'and' | kw= 'or' )
+            int alt11=2;
+            int LA11_0 = input.LA(1);
+
+            if ( (LA11_0==18) ) {
+                alt11=1;
+            }
+            else if ( (LA11_0==19) ) {
+                alt11=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 11, 0, input);
+
+                throw nvae;
+            }
+            switch (alt11) {
+                case 1 :
+                    // InternalScheme.g:385:3: kw= 'and'
+                    {
+                    kw=(Token)match(input,18,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getBoolOperatorAccess().getAndKeyword_0());
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalScheme.g:391:3: kw= 'or'
+                    {
+                    kw=(Token)match(input,19,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getBoolOperatorAccess().getOrKeyword_1());
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleBoolOperator"
+
     // Delegated rules
 
 
@@ -1057,12 +1156,9 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000002002L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x00000000000FE030L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x00000000000E40C0L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x00000000000F8030L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x00000000000FC0F0L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x00000000000E2002L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x00000000000E0000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x00000000000E0002L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x00000000000FE000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x00000000000FA032L});
 
 }

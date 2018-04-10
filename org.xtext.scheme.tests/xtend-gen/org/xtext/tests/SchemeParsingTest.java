@@ -292,7 +292,7 @@ public class SchemeParsingTest {
   public void mustUnderstandNotBooleanOperationsWithNewOperationsInside() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("(or #t (and not #t #f))");
+      _builder.append("(or #t (and #f #t))");
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);

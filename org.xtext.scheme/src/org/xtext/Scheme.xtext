@@ -6,10 +6,10 @@ Model:
 	functions+=Function*;
 	
 terminal SCHEME_ID: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-')*;
-terminal OPERATOR: '+' | '-' | '*' | '/';
+terminal MATH_OPERATOR: '+' | '-' | '*' | '/';
 
 FunctionId:
-	OPERATOR | SCHEME_ID 
+	MATH_OPERATOR | SCHEME_ID 
 ;
 
 
@@ -22,10 +22,13 @@ Function:
 ;
 
 BooleanOperation:
-	( "or" | "and" )? (('not'? Boolean)* | '(' BooleanOperation ')')
+	( BoolOperator )? (('not')? Boolean)+ ('(' BooleanOperation ')')*
 ;
 
 Boolean:
 	"#t" | "#f"
 ;
 
+BoolOperator: 
+	"and" | "or"
+;

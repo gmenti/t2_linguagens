@@ -34,14 +34,13 @@ public class SchemeParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionIdAccess().getAlternatives(), "rule__FunctionId__Alternatives");
 					put(grammarAccess.getFunctionParamAccess().getAlternatives(), "rule__FunctionParam__Alternatives");
 					put(grammarAccess.getFunctionAccess().getAlternatives_1(), "rule__Function__Alternatives_1");
-					put(grammarAccess.getBooleanOperationAccess().getAlternatives_0(), "rule__BooleanOperation__Alternatives_0");
-					put(grammarAccess.getBooleanOperationAccess().getAlternatives_1(), "rule__BooleanOperation__Alternatives_1");
 					put(grammarAccess.getBooleanAccess().getAlternatives(), "rule__Boolean__Alternatives");
+					put(grammarAccess.getBoolOperatorAccess().getAlternatives(), "rule__BoolOperator__Alternatives");
 					put(grammarAccess.getFunctionAccess().getGroup(), "rule__Function__Group__0");
 					put(grammarAccess.getFunctionAccess().getGroup_1_0(), "rule__Function__Group_1_0__0");
 					put(grammarAccess.getBooleanOperationAccess().getGroup(), "rule__BooleanOperation__Group__0");
-					put(grammarAccess.getBooleanOperationAccess().getGroup_1_0(), "rule__BooleanOperation__Group_1_0__0");
-					put(grammarAccess.getBooleanOperationAccess().getGroup_1_1(), "rule__BooleanOperation__Group_1_1__0");
+					put(grammarAccess.getBooleanOperationAccess().getGroup_1(), "rule__BooleanOperation__Group_1__0");
+					put(grammarAccess.getBooleanOperationAccess().getGroup_2(), "rule__BooleanOperation__Group_2__0");
 					put(grammarAccess.getModelAccess().getFunctionsAssignment(), "rule__Model__FunctionsAssignment");
 					put(grammarAccess.getFunctionAccess().getIdAssignment_1_0_0(), "rule__Function__IdAssignment_1_0_0");
 					put(grammarAccess.getFunctionAccess().getParamsAssignment_1_0_1(), "rule__Function__ParamsAssignment_1_0_1");

@@ -112,12 +112,12 @@ ruleFunctionId returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToke
 	leaveRule();
 }:
 	(
-		this_OPERATOR_0=RULE_OPERATOR
+		this_MATH_OPERATOR_0=RULE_MATH_OPERATOR
 		{
-			$current.merge(this_OPERATOR_0);
+			$current.merge(this_MATH_OPERATOR_0);
 		}
 		{
-			newLeafNode(this_OPERATOR_0, grammarAccess.getFunctionIdAccess().getOPERATORTerminalRuleCall_0());
+			newLeafNode(this_MATH_OPERATOR_0, grammarAccess.getFunctionIdAccess().getMATH_OPERATORTerminalRuleCall_0());
 		}
 		    |
 		this_SCHEME_ID_1=RULE_SCHEME_ID
@@ -281,62 +281,58 @@ ruleBooleanOperation returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRu
 }:
 	(
 		(
-			kw='or'
 			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getOrKeyword_0_0());
+				newCompositeNode(grammarAccess.getBooleanOperationAccess().getBoolOperatorParserRuleCall_0());
 			}
-			    |
-			kw='and'
+			this_BoolOperator_0=ruleBoolOperator
 			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getAndKeyword_0_1());
+				$current.merge(this_BoolOperator_0);
+			}
+			{
+				afterParserOrEnumRuleCall();
 			}
 		)?
 		(
 			(
-				(
-					kw='not'
-					{
-						$current.merge(kw);
-						newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getNotKeyword_1_0_0());
-					}
-				)?
-				{
-					newCompositeNode(grammarAccess.getBooleanOperationAccess().getBooleanParserRuleCall_1_0_1());
-				}
-				this_Boolean_3=ruleBoolean
-				{
-					$current.merge(this_Boolean_3);
-				}
-				{
-					afterParserOrEnumRuleCall();
-				}
-			)*
-			    |
-			(
-				kw='('
+				kw='not'
 				{
 					$current.merge(kw);
-					newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getLeftParenthesisKeyword_1_1_0());
+					newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getNotKeyword_1_0());
 				}
-				{
-					newCompositeNode(grammarAccess.getBooleanOperationAccess().getBooleanOperationParserRuleCall_1_1_1());
-				}
-				this_BooleanOperation_5=ruleBooleanOperation
-				{
-					$current.merge(this_BooleanOperation_5);
-				}
-				{
-					afterParserOrEnumRuleCall();
-				}
-				kw=')'
-				{
-					$current.merge(kw);
-					newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getRightParenthesisKeyword_1_1_2());
-				}
-			)
-		)
+			)?
+			{
+				newCompositeNode(grammarAccess.getBooleanOperationAccess().getBooleanParserRuleCall_1_1());
+			}
+			this_Boolean_2=ruleBoolean
+			{
+				$current.merge(this_Boolean_2);
+			}
+			{
+				afterParserOrEnumRuleCall();
+			}
+		)+
+		(
+			kw='('
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getLeftParenthesisKeyword_2_0());
+			}
+			{
+				newCompositeNode(grammarAccess.getBooleanOperationAccess().getBooleanOperationParserRuleCall_2_1());
+			}
+			this_BooleanOperation_4=ruleBooleanOperation
+			{
+				$current.merge(this_BooleanOperation_4);
+			}
+			{
+				afterParserOrEnumRuleCall();
+			}
+			kw=')'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getRightParenthesisKeyword_2_2());
+			}
+		)*
 	)
 ;
 
@@ -370,9 +366,39 @@ ruleBoolean returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 	)
 ;
 
+// Entry rule entryRuleBoolOperator
+entryRuleBoolOperator returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getBoolOperatorRule()); }
+	iv_ruleBoolOperator=ruleBoolOperator
+	{ $current=$iv_ruleBoolOperator.current.getText(); }
+	EOF;
+
+// Rule BoolOperator
+ruleBoolOperator returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw='and'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getBoolOperatorAccess().getAndKeyword_0());
+		}
+		    |
+		kw='or'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getBoolOperatorAccess().getOrKeyword_1());
+		}
+	)
+;
+
 RULE_SCHEME_ID : ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-')*;
 
-RULE_OPERATOR : ('+'|'-'|'*'|'/');
+RULE_MATH_OPERATOR : ('+'|'-'|'*'|'/');
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

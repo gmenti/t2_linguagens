@@ -155,6 +155,16 @@ public class SchemePackageImpl extends EPackageImpl implements SchemePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getFunction_Bl()
+  {
+    return (EAttribute)functionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public SchemeFactory getSchemeFactory()
   {
     return (SchemeFactory)getEFactoryInstance();
@@ -186,6 +196,7 @@ public class SchemePackageImpl extends EPackageImpl implements SchemePackage
     functionEClass = createEClass(FUNCTION);
     createEAttribute(functionEClass, FUNCTION__ID);
     createEAttribute(functionEClass, FUNCTION__PARAMS);
+    createEAttribute(functionEClass, FUNCTION__BL);
   }
 
   /**
@@ -225,6 +236,7 @@ public class SchemePackageImpl extends EPackageImpl implements SchemePackage
     initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunction_Id(), ecorePackage.getEString(), "id", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunction_Params(), ecorePackage.getEString(), "params", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunction_Bl(), ecorePackage.getEString(), "bl", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

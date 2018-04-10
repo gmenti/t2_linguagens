@@ -12,6 +12,7 @@
     <genClasses ecoreClass="Scheme.ecore#//Function">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scheme.ecore#//Function/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scheme.ecore#//Function/params"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Scheme.ecore#//Function/bl"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -114,13 +114,22 @@ public interface SchemePackage extends EPackage
   int FUNCTION__PARAMS = 1;
 
   /**
+   * The feature id for the '<em><b>Bl</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION__BL = 2;
+
+  /**
    * The number of structural features of the '<em>Function</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_FEATURE_COUNT = 2;
+  int FUNCTION_FEATURE_COUNT = 3;
 
 
   /**
@@ -175,6 +184,17 @@ public interface SchemePackage extends EPackage
    * @generated
    */
   EAttribute getFunction_Params();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.scheme.Function#getBl <em>Bl</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Bl</em>'.
+   * @see org.xtext.scheme.Function#getBl()
+   * @see #getFunction()
+   * @generated
+   */
+  EAttribute getFunction_Bl();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -242,6 +262,14 @@ public interface SchemePackage extends EPackage
      * @generated
      */
     EAttribute FUNCTION__PARAMS = eINSTANCE.getFunction_Params();
+
+    /**
+     * The meta object literal for the '<em><b>Bl</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCTION__BL = eINSTANCE.getFunction_Bl();
 
   }
 

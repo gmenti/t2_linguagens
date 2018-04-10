@@ -127,17 +127,6 @@ ruleFunctionId returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToke
 		{
 			newLeafNode(this_SCHEME_ID_1, grammarAccess.getFunctionIdAccess().getSCHEME_IDTerminalRuleCall_1());
 		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getFunctionIdAccess().getBooleanParserRuleCall_2());
-		}
-		this_Boolean_2=ruleBoolean
-		{
-			$current.merge(this_Boolean_2);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
 	)
 ;
 
@@ -208,46 +197,146 @@ ruleFunction returns [EObject current=null]
 		}
 		(
 			(
-				{
-					newCompositeNode(grammarAccess.getFunctionAccess().getIdFunctionIdParserRuleCall_1_0());
-				}
-				lv_id_1_0=ruleFunctionId
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getFunctionRule());
-					}
-					set(
-						$current,
-						"id",
-						lv_id_1_0,
-						"org.xtext.Scheme.FunctionId");
-					afterParserOrEnumRuleCall();
-				}
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getFunctionAccess().getIdFunctionIdParserRuleCall_1_0_0_0());
+						}
+						lv_id_1_0=ruleFunctionId
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getFunctionRule());
+							}
+							set(
+								$current,
+								"id",
+								lv_id_1_0,
+								"org.xtext.Scheme.FunctionId");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getFunctionAccess().getParamsFunctionParamParserRuleCall_1_0_1_0());
+						}
+						lv_params_2_0=ruleFunctionParam
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getFunctionRule());
+							}
+							add(
+								$current,
+								"params",
+								lv_params_2_0,
+								"org.xtext.Scheme.FunctionParam");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)*
 			)
-		)*
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getFunctionAccess().getBlBooleanOperationParserRuleCall_1_1_0());
+					}
+					lv_bl_3_0=ruleBooleanOperation
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getFunctionRule());
+						}
+						set(
+							$current,
+							"bl",
+							lv_bl_3_0,
+							"org.xtext.Scheme.BooleanOperation");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		otherlv_4=')'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_2());
+		}
+	)
+;
+
+// Entry rule entryRuleBooleanOperation
+entryRuleBooleanOperation returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getBooleanOperationRule()); }
+	iv_ruleBooleanOperation=ruleBooleanOperation
+	{ $current=$iv_ruleBooleanOperation.current.getText(); }
+	EOF;
+
+// Rule BooleanOperation
+ruleBooleanOperation returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			kw='or'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getOrKeyword_0_0());
+			}
+			    |
+			kw='and'
+			{
+				$current.merge(kw);
+				newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getAndKeyword_0_1());
+			}
+		)?
 		(
 			(
-				{
-					newCompositeNode(grammarAccess.getFunctionAccess().getParamsFunctionParamParserRuleCall_2_0());
-				}
-				lv_params_2_0=ruleFunctionParam
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getFunctionRule());
+				(
+					kw='not'
+					{
+						$current.merge(kw);
+						newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getNotKeyword_1_0_0());
 					}
-					add(
-						$current,
-						"params",
-						lv_params_2_0,
-						"org.xtext.Scheme.FunctionParam");
+				)?
+				{
+					newCompositeNode(grammarAccess.getBooleanOperationAccess().getBooleanParserRuleCall_1_0_1());
+				}
+				this_Boolean_3=ruleBoolean
+				{
+					$current.merge(this_Boolean_3);
+				}
+				{
 					afterParserOrEnumRuleCall();
 				}
+			)*
+			    |
+			(
+				kw='('
+				{
+					$current.merge(kw);
+					newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getLeftParenthesisKeyword_1_1_0());
+				}
+				{
+					newCompositeNode(grammarAccess.getBooleanOperationAccess().getBooleanOperationParserRuleCall_1_1_1());
+				}
+				this_BooleanOperation_5=ruleBooleanOperation
+				{
+					$current.merge(this_BooleanOperation_5);
+				}
+				{
+					afterParserOrEnumRuleCall();
+				}
+				kw=')'
+				{
+					$current.merge(kw);
+					newLeafNode(kw, grammarAccess.getBooleanOperationAccess().getRightParenthesisKeyword_1_1_2());
+				}
 			)
-		)*
-		otherlv_3=')'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_3());
-		}
+		)
 	)
 ;
 
@@ -283,7 +372,7 @@ ruleBoolean returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 
 RULE_SCHEME_ID : ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-')*;
 
-RULE_OPERATOR : ('+'|'-'|'*'|'/'|'and'|'or');
+RULE_OPERATOR : ('+'|'-'|'*'|'/');
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

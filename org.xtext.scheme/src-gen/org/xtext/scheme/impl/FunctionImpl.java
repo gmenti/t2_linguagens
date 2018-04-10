@@ -28,6 +28,7 @@ import org.xtext.scheme.SchemePackage;
  * <ul>
  *   <li>{@link org.xtext.scheme.impl.FunctionImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.xtext.scheme.impl.FunctionImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link org.xtext.scheme.impl.FunctionImpl#getBl <em>Bl</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,6 +65,26 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * @ordered
    */
   protected EList<String> params;
+
+  /**
+   * The default value of the '{@link #getBl() <em>Bl</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBl()
+   * @generated
+   * @ordered
+   */
+  protected static final String BL_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getBl() <em>Bl</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBl()
+   * @generated
+   * @ordered
+   */
+  protected String bl = BL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -128,6 +149,29 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getBl()
+  {
+    return bl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setBl(String newBl)
+  {
+    String oldBl = bl;
+    bl = newBl;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SchemePackage.FUNCTION__BL, oldBl, bl));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -137,6 +181,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
         return getId();
       case SchemePackage.FUNCTION__PARAMS:
         return getParams();
+      case SchemePackage.FUNCTION__BL:
+        return getBl();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -159,6 +205,9 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
         getParams().clear();
         getParams().addAll((Collection<? extends String>)newValue);
         return;
+      case SchemePackage.FUNCTION__BL:
+        setBl((String)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -179,6 +228,9 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
       case SchemePackage.FUNCTION__PARAMS:
         getParams().clear();
         return;
+      case SchemePackage.FUNCTION__BL:
+        setBl(BL_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -197,6 +249,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
         return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
       case SchemePackage.FUNCTION__PARAMS:
         return params != null && !params.isEmpty();
+      case SchemePackage.FUNCTION__BL:
+        return BL_EDEFAULT == null ? bl != null : !BL_EDEFAULT.equals(bl);
     }
     return super.eIsSet(featureID);
   }
@@ -216,6 +270,8 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
     result.append(id);
     result.append(", params: ");
     result.append(params);
+    result.append(", bl: ");
+    result.append(bl);
     result.append(')');
     return result.toString();
   }

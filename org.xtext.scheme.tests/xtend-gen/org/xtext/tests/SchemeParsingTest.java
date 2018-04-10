@@ -275,10 +275,24 @@ public class SchemeParsingTest {
   }
   
   @Test
-  public void mustUnderstandBooleanAsAnOperator() {
+  public void mustUnderstandNotBooleanOperator() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("(#t)");
+      _builder.append("(not #t)");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void mustUnderstandNotBooleanOperationsWithNewOperationsInside() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(or #t (and not #t #f))");
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);

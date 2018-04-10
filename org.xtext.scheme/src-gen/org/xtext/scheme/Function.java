@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.xtext.scheme.Function#getId <em>Id</em>}</li>
  *   <li>{@link org.xtext.scheme.Function#getParams <em>Params</em>}</li>
+ *   <li>{@link org.xtext.scheme.Function#getBl <em>Bl</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,5 +68,31 @@ public interface Function extends EObject
    * @generated
    */
   EList<String> getParams();
+
+  /**
+   * Returns the value of the '<em><b>Bl</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Bl</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Bl</em>' attribute.
+   * @see #setBl(String)
+   * @see org.xtext.scheme.SchemePackage#getFunction_Bl()
+   * @model
+   * @generated
+   */
+  String getBl();
+
+  /**
+   * Sets the value of the '{@link org.xtext.scheme.Function#getBl <em>Bl</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Bl</em>' attribute.
+   * @see #getBl()
+   * @generated
+   */
+  void setBl(String value);
 
 } // Function

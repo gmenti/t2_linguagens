@@ -181,11 +181,21 @@ class SchemeParsingTest {
 	}
 	
 	@Test
-	def void mustUnderstandBooleanAsAnOperator() {
+	def void mustUnderstandNotBooleanOperator() {
 		val result = parseHelper.parse('''
-			(#t)
+			(not #t)
 		''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 	}
+	
+	@Test
+	def void mustUnderstandNotBooleanOperationsWithNewOperationsInside() {
+		val result = parseHelper.parse('''
+			(or #t (and not #t #f))
+		''')
+		Assert.assertNotNull(result)
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+	}
+	
 }

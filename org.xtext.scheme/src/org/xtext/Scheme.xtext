@@ -6,16 +6,22 @@ Model:
 	functions+=Function*;
 	
 terminal SCHEME_ID: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-')*;
-terminal OPERATOR: '+' | '-' | '*' | '/';
+terminal OPERATOR: '+' | '-' | '*' | '/' | 'and' | 'or';
 
 FunctionId:
 	OPERATOR | SCHEME_ID
 ;
 
+
 FunctionParam:
-	INT | ID
+	INT | ID | Boolean
 ;
 
 Function:
 	'(' id=FunctionId params+=FunctionParam* ')'	
 ;
+
+Boolean:
+	"#t" | "#f"
+;
+

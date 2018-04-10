@@ -161,4 +161,22 @@ class SchemeParsingTest {
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 	}
+	
+	@Test
+	def void mustOperateWithBool() {
+		val result = parseHelper.parse('''
+			(or #t)
+		''')
+		Assert.assertNotNull(result)
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+	}
+	
+	@Test
+	def void mustOperateWithTwoBool() {
+		val result = parseHelper.parse('''
+			(or #t #f)
+		''')
+		Assert.assertNotNull(result)
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+	}
 }

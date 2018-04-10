@@ -3,19 +3,16 @@
  */
 package org.xtext.ui.labeling;
 
-import com.google.inject.Inject;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
-
 /**
  * Provides labels for EObjects.
  * 
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#label-provider
  */
 @SuppressWarnings("all")
-public class SchemeLabelProvider extends DefaultEObjectLabelProvider {
-  @Inject
-  public SchemeLabelProvider(final AdapterFactoryLabelProvider delegate) {
-    super(delegate);
+public class SchemeLabelProvider /* implements DefaultEObjectLabelProvider  */{
+  /* @Inject
+   */public SchemeLabelProvider(final /* AdapterFactoryLabelProvider */Object delegate) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method super(AdapterFactoryLabelProvider) is undefined");
   }
 }

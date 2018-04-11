@@ -6,29 +6,39 @@ Model:
 	functions+=Function*;
 	
 terminal SCHEME_ID: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-')*;
-terminal MATH_OPERATOR: '+' | '-' | '*' | '/';
 
-FunctionId:
-	MATH_OPERATOR | SCHEME_ID 
-;
-
-
-FunctionParam:
+AnyParam:
 	INT | ID | Boolean
 ;
 
-Function:
-	'(' (id=FunctionId params+=FunctionParam* | bl=BooleanOperation) ')' 
-;
-
-BooleanOperation:
-	( BoolOperator )? (('not')? Boolean)+ ('(' BooleanOperation ')')*
-;
-
 Boolean:
-	"#t" | "#f"
+	'not'? ("#t" | "#f" | "0" | "1")
 ;
 
 BoolOperator: 
 	"and" | "or"
+;
+
+MathOperator:
+	"+" | "-" | "*" | "/"
+;
+
+AnyFunction:
+	SCHEME_ID AnyParam*
+;
+
+BooleanFunction:
+	BoolOperator? Boolean*
+;
+
+DefineFunction:
+	"define" SCHEME_ID AnyParam 	
+;
+
+MathFuction:
+	MathOperator? INT*
+;
+
+Function:
+	'(' (DefineFunction | BooleanFunction | MathFuction | AnyFunction) Function* ')'
 ;

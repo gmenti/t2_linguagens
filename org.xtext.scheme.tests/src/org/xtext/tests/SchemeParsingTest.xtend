@@ -198,4 +198,13 @@ class SchemeParsingTest {
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 	}
 	
+	@Test
+	def void mustUnderstandNotBooleanOperationsWithBits() {
+		val result = parseHelper.parse('''
+			(or 1 (and 0 1))
+		''')
+		Assert.assertNotNull(result)
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+	}
+	
 }

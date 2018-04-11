@@ -3,14 +3,13 @@
  */
 package org.xtext;
 
-import org.xtext.SchemeStandaloneSetupGenerated;
-
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */
 @SuppressWarnings("all")
-public class SchemeStandaloneSetup extends SchemeStandaloneSetupGenerated {
+public class SchemeStandaloneSetup /* implements SchemeStandaloneSetupGenerated  */{
   public static void doSetup() {
-    new SchemeStandaloneSetup().createInjectorAndDoEMFRegistration();
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method createInjectorAndDoEMFRegistration() is undefined for the type SchemeStandaloneSetup");
   }
 }

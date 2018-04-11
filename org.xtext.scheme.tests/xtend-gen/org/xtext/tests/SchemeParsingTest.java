@@ -301,4 +301,18 @@ public class SchemeParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void mustUnderstandNotBooleanOperationsWithBits() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(or 1 (and 0 1))");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

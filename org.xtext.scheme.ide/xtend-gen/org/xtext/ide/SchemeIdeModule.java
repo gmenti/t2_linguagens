@@ -3,9 +3,11 @@
  */
 package org.xtext.ide;
 
+import org.xtext.ide.AbstractSchemeIdeModule;
+
 /**
  * Use this class to register ide components.
  */
 @SuppressWarnings("all")
-public class SchemeIdeModule /* implements AbstractSchemeIdeModule  */{
+public class SchemeIdeModule extends AbstractSchemeIdeModule {
 }

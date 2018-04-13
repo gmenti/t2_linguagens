@@ -3,12 +3,17 @@
  */
 package org.xtext.ui;
 
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
+import org.xtext.ui.AbstractSchemeUiModule;
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
  */
 @FinalFieldsConstructor
 @SuppressWarnings("all")
-public class SchemeUiModule /* implements AbstractSchemeUiModule  */{
+public class SchemeUiModule extends AbstractSchemeUiModule {
+  public SchemeUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
 }

@@ -37,202 +37,95 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		//Function
 		public RuleCall getFunctionsFunctionParserRuleCall_0() { return cFunctionsFunctionParserRuleCall_0; }
 	}
-	public class AnyParamElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.AnyParam");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cINTTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cIDTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cBooleanParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		
-		//AnyParam:
-		//	INT | ID | Boolean;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//INT | ID | Boolean
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//INT
-		public RuleCall getINTTerminalRuleCall_0() { return cINTTerminalRuleCall_0; }
-		
-		//ID
-		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
-		
-		//Boolean
-		public RuleCall getBooleanParserRuleCall_2() { return cBooleanParserRuleCall_2; }
-	}
 	public class BooleanElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.Boolean");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cTKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cFKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cDigitZeroKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cDigitOneKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		
+		//Boolean:
+		//	"#t" | "#f" | "0" | "1";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"#t" | "#f" | "0" | "1"
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//"#t"
+		public Keyword getTKeyword_0() { return cTKeyword_0; }
+		
+		//"#f"
+		public Keyword getFKeyword_1() { return cFKeyword_1; }
+		
+		//"0"
+		public Keyword getDigitZeroKeyword_2() { return cDigitZeroKeyword_2; }
+		
+		//"1"
+		public Keyword getDigitOneKeyword_3() { return cDigitOneKeyword_3; }
+	}
+	public class VariableElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.Variable");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cNotKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Keyword cTKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
-		private final Keyword cFKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
-		private final Keyword cDigitZeroKeyword_1_2 = (Keyword)cAlternatives_1.eContents().get(2);
-		private final Keyword cDigitOneKeyword_1_3 = (Keyword)cAlternatives_1.eContents().get(3);
+		private final RuleCall cINTTerminalRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
+		private final RuleCall cBooleanParserRuleCall_1_2 = (RuleCall)cAlternatives_1.eContents().get(2);
+		private final RuleCall cSCHEME_IDTerminalRuleCall_1_3 = (RuleCall)cAlternatives_1.eContents().get(3);
+		private final RuleCall cFunctionParserRuleCall_1_4 = (RuleCall)cAlternatives_1.eContents().get(4);
 		
-		//Boolean:
-		//	'not'? ("#t" | "#f" | "0" | "1");
+		//Variable:
+		//	"not"? (INT | ID | Boolean | SCHEME_ID | Function);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'not'? ("#t" | "#f" | "0" | "1")
+		//"not"? (INT | ID | Boolean | SCHEME_ID | Function)
 		public Group getGroup() { return cGroup; }
 		
-		//'not'?
+		//"not"?
 		public Keyword getNotKeyword_0() { return cNotKeyword_0; }
 		
-		//"#t" | "#f" | "0" | "1"
+		//INT | ID | Boolean | SCHEME_ID | Function
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
-		//"#t"
-		public Keyword getTKeyword_1_0() { return cTKeyword_1_0; }
+		//INT
+		public RuleCall getINTTerminalRuleCall_1_0() { return cINTTerminalRuleCall_1_0; }
 		
-		//"#f"
-		public Keyword getFKeyword_1_1() { return cFKeyword_1_1; }
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 		
-		//"0"
-		public Keyword getDigitZeroKeyword_1_2() { return cDigitZeroKeyword_1_2; }
-		
-		//"1"
-		public Keyword getDigitOneKeyword_1_3() { return cDigitOneKeyword_1_3; }
-	}
-	public class BoolOperatorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.BoolOperator");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cAndKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cOrKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		
-		//BoolOperator:
-		//	"and" | "or";
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"and" | "or"
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//"and"
-		public Keyword getAndKeyword_0() { return cAndKeyword_0; }
-		
-		//"or"
-		public Keyword getOrKeyword_1() { return cOrKeyword_1; }
-	}
-	public class MathOperatorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.MathOperator");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cPlusSignKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cHyphenMinusKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cAsteriskKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cSolidusKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		
-		//MathOperator:
-		//	"+" | "-" | "*" | "/";
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"+" | "-" | "*" | "/"
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//"+"
-		public Keyword getPlusSignKeyword_0() { return cPlusSignKeyword_0; }
-		
-		//"-"
-		public Keyword getHyphenMinusKeyword_1() { return cHyphenMinusKeyword_1; }
-		
-		//"*"
-		public Keyword getAsteriskKeyword_2() { return cAsteriskKeyword_2; }
-		
-		//"/"
-		public Keyword getSolidusKeyword_3() { return cSolidusKeyword_3; }
-	}
-	public class AnyFunctionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.AnyFunction");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cSCHEME_IDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final RuleCall cAnyParamParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		
-		//AnyFunction:
-		//	SCHEME_ID AnyParam*;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//SCHEME_ID AnyParam*
-		public Group getGroup() { return cGroup; }
+		//Boolean
+		public RuleCall getBooleanParserRuleCall_1_2() { return cBooleanParserRuleCall_1_2; }
 		
 		//SCHEME_ID
-		public RuleCall getSCHEME_IDTerminalRuleCall_0() { return cSCHEME_IDTerminalRuleCall_0; }
+		public RuleCall getSCHEME_IDTerminalRuleCall_1_3() { return cSCHEME_IDTerminalRuleCall_1_3; }
 		
-		//AnyParam*
-		public RuleCall getAnyParamParserRuleCall_1() { return cAnyParamParserRuleCall_1; }
-	}
-	public class BooleanFunctionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.BooleanFunction");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cBoolOperatorParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final RuleCall cBooleanParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		
-		//BooleanFunction:
-		//	BoolOperator? Boolean*;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//BoolOperator? Boolean*
-		public Group getGroup() { return cGroup; }
-		
-		//BoolOperator?
-		public RuleCall getBoolOperatorParserRuleCall_0() { return cBoolOperatorParserRuleCall_0; }
-		
-		//Boolean*
-		public RuleCall getBooleanParserRuleCall_1() { return cBooleanParserRuleCall_1; }
-	}
-	public class MathFuctionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.MathFuction");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cMathOperatorParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		
-		//MathFuction:
-		//	MathOperator? INT*;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//MathOperator? INT*
-		public Group getGroup() { return cGroup; }
-		
-		//MathOperator?
-		public RuleCall getMathOperatorParserRuleCall_0() { return cMathOperatorParserRuleCall_0; }
-		
-		//INT*
-		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+		//Function
+		public RuleCall getFunctionParserRuleCall_1_4() { return cFunctionParserRuleCall_1_4; }
 	}
 	public class FunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.Function");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final RuleCall cBooleanFunctionParserRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
-		private final RuleCall cMathFuctionParserRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
-		private final RuleCall cAnyFunctionParserRuleCall_1_2 = (RuleCall)cAlternatives_1.eContents().get(2);
-		private final RuleCall cFunctionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final RuleCall cSCHEME_IDTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final RuleCall cVariableParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Function:
-		//	'(' (BooleanFunction | MathFuction | AnyFunction) Function* ')';
+		//	'(' SCHEME_ID Variable* ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'(' (BooleanFunction | MathFuction | AnyFunction) Function* ')'
+		//'(' SCHEME_ID Variable* ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 		
-		//BooleanFunction | MathFuction | AnyFunction
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		//SCHEME_ID
+		public RuleCall getSCHEME_IDTerminalRuleCall_1() { return cSCHEME_IDTerminalRuleCall_1; }
 		
-		//BooleanFunction
-		public RuleCall getBooleanFunctionParserRuleCall_1_0() { return cBooleanFunctionParserRuleCall_1_0; }
-		
-		//MathFuction
-		public RuleCall getMathFuctionParserRuleCall_1_1() { return cMathFuctionParserRuleCall_1_1; }
-		
-		//AnyFunction
-		public RuleCall getAnyFunctionParserRuleCall_1_2() { return cAnyFunctionParserRuleCall_1_2; }
-		
-		//Function*
-		public RuleCall getFunctionParserRuleCall_2() { return cFunctionParserRuleCall_2; }
+		//Variable*
+		public RuleCall getVariableParserRuleCall_2() { return cVariableParserRuleCall_2; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -241,13 +134,8 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final ModelElements pModel;
 	private final TerminalRule tSCHEME_ID;
-	private final AnyParamElements pAnyParam;
 	private final BooleanElements pBoolean;
-	private final BoolOperatorElements pBoolOperator;
-	private final MathOperatorElements pMathOperator;
-	private final AnyFunctionElements pAnyFunction;
-	private final BooleanFunctionElements pBooleanFunction;
-	private final MathFuctionElements pMathFuction;
+	private final VariableElements pVariable;
 	private final FunctionElements pFunction;
 	
 	private final Grammar grammar;
@@ -261,13 +149,8 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.tSCHEME_ID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.SCHEME_ID");
-		this.pAnyParam = new AnyParamElements();
 		this.pBoolean = new BooleanElements();
-		this.pBoolOperator = new BoolOperatorElements();
-		this.pMathOperator = new MathOperatorElements();
-		this.pAnyFunction = new AnyFunctionElements();
-		this.pBooleanFunction = new BooleanFunctionElements();
-		this.pMathFuction = new MathFuctionElements();
+		this.pVariable = new VariableElements();
 		this.pFunction = new FunctionElements();
 	}
 	
@@ -314,18 +197,8 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		return tSCHEME_ID;
 	}
 	
-	//AnyParam:
-	//	INT | ID | Boolean;
-	public AnyParamElements getAnyParamAccess() {
-		return pAnyParam;
-	}
-	
-	public ParserRule getAnyParamRule() {
-		return getAnyParamAccess().getRule();
-	}
-	
 	//Boolean:
-	//	'not'? ("#t" | "#f" | "0" | "1");
+	//	"#t" | "#f" | "0" | "1";
 	public BooleanElements getBooleanAccess() {
 		return pBoolean;
 	}
@@ -334,58 +207,18 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		return getBooleanAccess().getRule();
 	}
 	
-	//BoolOperator:
-	//	"and" | "or";
-	public BoolOperatorElements getBoolOperatorAccess() {
-		return pBoolOperator;
+	//Variable:
+	//	"not"? (INT | ID | Boolean | SCHEME_ID | Function);
+	public VariableElements getVariableAccess() {
+		return pVariable;
 	}
 	
-	public ParserRule getBoolOperatorRule() {
-		return getBoolOperatorAccess().getRule();
-	}
-	
-	//MathOperator:
-	//	"+" | "-" | "*" | "/";
-	public MathOperatorElements getMathOperatorAccess() {
-		return pMathOperator;
-	}
-	
-	public ParserRule getMathOperatorRule() {
-		return getMathOperatorAccess().getRule();
-	}
-	
-	//AnyFunction:
-	//	SCHEME_ID AnyParam*;
-	public AnyFunctionElements getAnyFunctionAccess() {
-		return pAnyFunction;
-	}
-	
-	public ParserRule getAnyFunctionRule() {
-		return getAnyFunctionAccess().getRule();
-	}
-	
-	//BooleanFunction:
-	//	BoolOperator? Boolean*;
-	public BooleanFunctionElements getBooleanFunctionAccess() {
-		return pBooleanFunction;
-	}
-	
-	public ParserRule getBooleanFunctionRule() {
-		return getBooleanFunctionAccess().getRule();
-	}
-	
-	//MathFuction:
-	//	MathOperator? INT*;
-	public MathFuctionElements getMathFuctionAccess() {
-		return pMathFuction;
-	}
-	
-	public ParserRule getMathFuctionRule() {
-		return getMathFuctionAccess().getRule();
+	public ParserRule getVariableRule() {
+		return getVariableAccess().getRule();
 	}
 	
 	//Function:
-	//	'(' (BooleanFunction | MathFuction | AnyFunction) Function* ')';
+	//	'(' SCHEME_ID Variable* ')';
 	public FunctionElements getFunctionAccess() {
 		return pFunction;
 	}

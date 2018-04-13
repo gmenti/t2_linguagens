@@ -3,8 +3,12 @@
  */
 package org.xtext.ide;
 
+import com.google.inject.Guice;
 import com.google.inject.Injector;
+import org.eclipse.xtext.util.Modules2;
+import org.xtext.SchemeRuntimeModule;
 import org.xtext.SchemeStandaloneSetup;
+import org.xtext.ide.SchemeIdeModule;
 
 /**
  * Initialization support for running Xtext languages as language servers.
@@ -13,8 +17,8 @@ import org.xtext.SchemeStandaloneSetup;
 public class SchemeIdeSetup extends SchemeStandaloneSetup {
   @Override
   public Injector createInjector() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from SchemeRuntimeModule to Module"
-      + "\nType mismatch: cannot convert from SchemeIdeModule to Module");
+    SchemeRuntimeModule _schemeRuntimeModule = new SchemeRuntimeModule();
+    SchemeIdeModule _schemeIdeModule = new SchemeIdeModule();
+    return Guice.createInjector(Modules2.mixin(_schemeRuntimeModule, _schemeIdeModule));
   }
 }

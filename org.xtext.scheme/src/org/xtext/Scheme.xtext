@@ -7,38 +7,14 @@ Model:
 	
 terminal SCHEME_ID: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-')*;
 
-AnyParam:
-	INT | ID | Boolean
-;
-
 Boolean:
-	'not'? ("#t" | "#f" | "0" | "1")
+	"#t" | "#f" | "0" | "1"
 ;
 
-BoolOperator: 
-	"and" | "or"
-;
-
-MathOperator:
-	"+" | "-" | "*" | "/"
-;
-
-AnyFunction:
-	SCHEME_ID AnyParam*
-;
-
-BooleanFunction:
-	BoolOperator? Boolean*
-;
-
-DefineFunction:
-	"define" SCHEME_ID AnyParam 	
-;
-
-MathFuction:
-	MathOperator? INT*
+Variable:
+	"not"? (INT | ID | Boolean | SCHEME_ID | Function)
 ;
 
 Function:
-	'(' (DefineFunction | BooleanFunction | MathFuction | AnyFunction) Function* ')'
+	'(' SCHEME_ID Variable* ')'
 ;

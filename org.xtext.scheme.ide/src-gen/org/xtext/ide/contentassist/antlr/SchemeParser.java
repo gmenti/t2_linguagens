@@ -32,6 +32,7 @@ public class SchemeParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getBooleanAccess().getAlternatives(), "rule__Boolean__Alternatives");
+					put(grammarAccess.getMathAccess().getAlternatives(), "rule__Math__Alternatives");
 					put(grammarAccess.getVariableAccess().getAlternatives_1(), "rule__Variable__Alternatives_1");
 					put(grammarAccess.getVariableAccess().getGroup(), "rule__Variable__Group__0");
 					put(grammarAccess.getFunctionAccess().getGroup(), "rule__Function__Group__0");

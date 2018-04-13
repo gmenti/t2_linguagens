@@ -5,7 +5,7 @@ generate scheme "http://www.xtext.org/Scheme"
 Model:
 	functions+=Function*;
 	
-terminal SCHEME_ID: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-')*;
+terminal SCHEME_ID: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-'|'/')*;
 
 Boolean:
 	"#t" | "#f" | "0" | "1"

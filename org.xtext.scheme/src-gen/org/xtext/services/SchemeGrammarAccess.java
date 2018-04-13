@@ -64,6 +64,37 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		//"1"
 		public Keyword getDigitOneKeyword_3() { return cDigitOneKeyword_3; }
 	}
+	public class MathElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.Math");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cPlusSignKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cAsteriskKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cSolidusKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cEqualsSignKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		
+		//Math:
+		//	"+" | "-" | "*" | "/" | "=";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"+" | "-" | "*" | "/" | "="
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//"+"
+		public Keyword getPlusSignKeyword_0() { return cPlusSignKeyword_0; }
+		
+		//"-"
+		public Keyword getHyphenMinusKeyword_1() { return cHyphenMinusKeyword_1; }
+		
+		//"*"
+		public Keyword getAsteriskKeyword_2() { return cAsteriskKeyword_2; }
+		
+		//"/"
+		public Keyword getSolidusKeyword_3() { return cSolidusKeyword_3; }
+		
+		//"="
+		public Keyword getEqualsSignKeyword_4() { return cEqualsSignKeyword_4; }
+	}
 	public class VariableElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.Variable");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -72,20 +103,21 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cINTTerminalRuleCall_1_0 = (RuleCall)cAlternatives_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cAlternatives_1.eContents().get(1);
 		private final RuleCall cBooleanParserRuleCall_1_2 = (RuleCall)cAlternatives_1.eContents().get(2);
-		private final RuleCall cSCHEME_IDTerminalRuleCall_1_3 = (RuleCall)cAlternatives_1.eContents().get(3);
-		private final RuleCall cFunctionParserRuleCall_1_4 = (RuleCall)cAlternatives_1.eContents().get(4);
+		private final RuleCall cMathParserRuleCall_1_3 = (RuleCall)cAlternatives_1.eContents().get(3);
+		private final RuleCall cSCHEME_IDTerminalRuleCall_1_4 = (RuleCall)cAlternatives_1.eContents().get(4);
+		private final RuleCall cFunctionParserRuleCall_1_5 = (RuleCall)cAlternatives_1.eContents().get(5);
 		
 		//Variable:
-		//	"not"? (INT | ID | Boolean | SCHEME_ID | Function);
+		//	"not"? (INT | ID | Boolean | Math | SCHEME_ID | Function);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"not"? (INT | ID | Boolean | SCHEME_ID | Function)
+		//"not"? (INT | ID | Boolean | Math | SCHEME_ID | Function)
 		public Group getGroup() { return cGroup; }
 		
 		//"not"?
 		public Keyword getNotKeyword_0() { return cNotKeyword_0; }
 		
-		//INT | ID | Boolean | SCHEME_ID | Function
+		//INT | ID | Boolean | Math | SCHEME_ID | Function
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
 		//INT
@@ -97,44 +129,52 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		//Boolean
 		public RuleCall getBooleanParserRuleCall_1_2() { return cBooleanParserRuleCall_1_2; }
 		
+		//Math
+		public RuleCall getMathParserRuleCall_1_3() { return cMathParserRuleCall_1_3; }
+		
 		//SCHEME_ID
-		public RuleCall getSCHEME_IDTerminalRuleCall_1_3() { return cSCHEME_IDTerminalRuleCall_1_3; }
+		public RuleCall getSCHEME_IDTerminalRuleCall_1_4() { return cSCHEME_IDTerminalRuleCall_1_4; }
 		
 		//Function
-		public RuleCall getFunctionParserRuleCall_1_4() { return cFunctionParserRuleCall_1_4; }
+		public RuleCall getFunctionParserRuleCall_1_5() { return cFunctionParserRuleCall_1_5; }
 	}
 	public class FunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.Function");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cSCHEME_IDTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		private final RuleCall cVariableParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cApostropheKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cSCHEME_IDTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final RuleCall cVariableParserRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Function:
-		//	'(' SCHEME_ID Variable* ')';
+		//	"'"? '(' SCHEME_ID Variable* ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'(' SCHEME_ID Variable* ')'
+		//"'"? '(' SCHEME_ID Variable* ')'
 		public Group getGroup() { return cGroup; }
 		
+		//"'"?
+		public Keyword getApostropheKeyword_0() { return cApostropheKeyword_0; }
+		
 		//'('
-		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 		
 		//SCHEME_ID
-		public RuleCall getSCHEME_IDTerminalRuleCall_1() { return cSCHEME_IDTerminalRuleCall_1; }
+		public RuleCall getSCHEME_IDTerminalRuleCall_2() { return cSCHEME_IDTerminalRuleCall_2; }
 		
 		//Variable*
-		public RuleCall getVariableParserRuleCall_2() { return cVariableParserRuleCall_2; }
+		public RuleCall getVariableParserRuleCall_3() { return cVariableParserRuleCall_3; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 	
 	
 	private final ModelElements pModel;
 	private final TerminalRule tSCHEME_ID;
 	private final BooleanElements pBoolean;
+	private final MathElements pMath;
 	private final VariableElements pVariable;
 	private final FunctionElements pFunction;
 	
@@ -150,6 +190,7 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		this.pModel = new ModelElements();
 		this.tSCHEME_ID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.SCHEME_ID");
 		this.pBoolean = new BooleanElements();
+		this.pMath = new MathElements();
 		this.pVariable = new VariableElements();
 		this.pFunction = new FunctionElements();
 	}
@@ -192,7 +233,7 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal SCHEME_ID:
-	//	('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '-')*;
+	//	('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '-' | '/')*;
 	public TerminalRule getSCHEME_IDRule() {
 		return tSCHEME_ID;
 	}
@@ -207,8 +248,18 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		return getBooleanAccess().getRule();
 	}
 	
+	//Math:
+	//	"+" | "-" | "*" | "/" | "=";
+	public MathElements getMathAccess() {
+		return pMath;
+	}
+	
+	public ParserRule getMathRule() {
+		return getMathAccess().getRule();
+	}
+	
 	//Variable:
-	//	"not"? (INT | ID | Boolean | SCHEME_ID | Function);
+	//	"not"? (INT | ID | Boolean | Math | SCHEME_ID | Function);
 	public VariableElements getVariableAccess() {
 		return pVariable;
 	}
@@ -218,7 +269,7 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Function:
-	//	'(' SCHEME_ID Variable* ')';
+	//	"'"? '(' SCHEME_ID Variable* ')';
 	public FunctionElements getFunctionAccess() {
 		return pFunction;
 	}

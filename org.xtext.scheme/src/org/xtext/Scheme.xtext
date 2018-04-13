@@ -20,5 +20,5 @@ Variable:
 ;
 
 Function:
-	'(' SCHEME_ID Variable* ')'
+	"'"? '(' SCHEME_ID Variable* ')'
 ;

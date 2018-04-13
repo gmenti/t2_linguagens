@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalSchemeParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_INT", "RULE_ID", "RULE_SCHEME_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'#t'", "'#f'", "'0'", "'1'", "'+'", "'-'", "'*'", "'/'", "'='", "'not'", "'\\''", "'('", "')'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_INT", "RULE_ID", "RULE_SCHEME_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'#t'", "'#f'", "'0'", "'1'", "'+'", "'-'", "'*'", "'/'", "'='", "'not'", "'['", "']'", "'('", "')'"
     };
     public static final int RULE_STRING=4;
     public static final int RULE_SL_COMMENT=9;
@@ -43,6 +43,7 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
     public static final int RULE_ML_COMMENT=8;
     public static final int T__23=23;
     public static final int T__24=24;
+    public static final int T__25=25;
     public static final int T__20=20;
     public static final int T__21=21;
 
@@ -142,7 +143,7 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( ((LA1_0>=22 && LA1_0<=23)) ) {
+                if ( (LA1_0==24) ) {
                     alt1=1;
                 }
 
@@ -551,7 +552,7 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariable"
-    // InternalScheme.g:197:1: ruleVariable returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction ) ) ;
+    // InternalScheme.g:197:1: ruleVariable returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction | this_Condition_8= ruleCondition ) ) ;
     public final AntlrDatatypeRuleToken ruleVariable() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -566,16 +567,18 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
         AntlrDatatypeRuleToken this_Function_7 = null;
 
+        AntlrDatatypeRuleToken this_Condition_8 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalScheme.g:203:2: ( ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction ) ) )
-            // InternalScheme.g:204:2: ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction ) )
+            // InternalScheme.g:203:2: ( ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction | this_Condition_8= ruleCondition ) ) )
+            // InternalScheme.g:204:2: ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction | this_Condition_8= ruleCondition ) )
             {
-            // InternalScheme.g:204:2: ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction ) )
-            // InternalScheme.g:205:3: (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction )
+            // InternalScheme.g:204:2: ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction | this_Condition_8= ruleCondition ) )
+            // InternalScheme.g:205:3: (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction | this_Condition_8= ruleCondition )
             {
             // InternalScheme.g:205:3: (kw= 'not' )?
             int alt4=2;
@@ -599,8 +602,8 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalScheme.g:212:3: (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction )
-            int alt5=7;
+            // InternalScheme.g:212:3: (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction | this_Condition_8= ruleCondition )
+            int alt5=8;
             switch ( input.LA(1) ) {
             case RULE_STRING:
                 {
@@ -639,10 +642,14 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
                 alt5=6;
                 }
                 break;
-            case 22:
-            case 23:
+            case 24:
                 {
                 alt5=7;
+                }
+                break;
+            case 22:
+                {
+                alt5=8;
                 }
                 break;
             default:
@@ -765,6 +772,26 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 8 :
+                    // InternalScheme.g:278:4: this_Condition_8= ruleCondition
+                    {
+
+                    				newCompositeNode(grammarAccess.getVariableAccess().getConditionParserRuleCall_1_7());
+                    			
+                    pushFollow(FOLLOW_2);
+                    this_Condition_8=ruleCondition();
+
+                    state._fsp--;
+
+
+                    				current.merge(this_Condition_8);
+                    			
+
+                    				afterParserOrEnumRuleCall();
+                    			
+
+                    }
+                    break;
 
             }
 
@@ -790,8 +817,133 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleVariable"
 
 
+    // $ANTLR start "entryRuleCondition"
+    // InternalScheme.g:293:1: entryRuleCondition returns [String current=null] : iv_ruleCondition= ruleCondition EOF ;
+    public final String entryRuleCondition() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleCondition = null;
+
+
+        try {
+            // InternalScheme.g:293:49: (iv_ruleCondition= ruleCondition EOF )
+            // InternalScheme.g:294:2: iv_ruleCondition= ruleCondition EOF
+            {
+             newCompositeNode(grammarAccess.getConditionRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleCondition=ruleCondition();
+
+            state._fsp--;
+
+             current =iv_ruleCondition.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleCondition"
+
+
+    // $ANTLR start "ruleCondition"
+    // InternalScheme.g:300:1: ruleCondition returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '[' (this_Variable_1= ruleVariable )* kw= ']' ) ;
+    public final AntlrDatatypeRuleToken ruleCondition() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+        AntlrDatatypeRuleToken this_Variable_1 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalScheme.g:306:2: ( (kw= '[' (this_Variable_1= ruleVariable )* kw= ']' ) )
+            // InternalScheme.g:307:2: (kw= '[' (this_Variable_1= ruleVariable )* kw= ']' )
+            {
+            // InternalScheme.g:307:2: (kw= '[' (this_Variable_1= ruleVariable )* kw= ']' )
+            // InternalScheme.g:308:3: kw= '[' (this_Variable_1= ruleVariable )* kw= ']'
+            {
+            kw=(Token)match(input,22,FOLLOW_5); 
+
+            			current.merge(kw);
+            			newLeafNode(kw, grammarAccess.getConditionAccess().getLeftSquareBracketKeyword_0());
+            		
+            // InternalScheme.g:313:3: (this_Variable_1= ruleVariable )*
+            loop6:
+            do {
+                int alt6=2;
+                int LA6_0 = input.LA(1);
+
+                if ( ((LA6_0>=RULE_STRING && LA6_0<=RULE_SCHEME_ID)||(LA6_0>=12 && LA6_0<=22)||LA6_0==24) ) {
+                    alt6=1;
+                }
+
+
+                switch (alt6) {
+            	case 1 :
+            	    // InternalScheme.g:314:4: this_Variable_1= ruleVariable
+            	    {
+
+            	    				newCompositeNode(grammarAccess.getConditionAccess().getVariableParserRuleCall_1());
+            	    			
+            	    pushFollow(FOLLOW_5);
+            	    this_Variable_1=ruleVariable();
+
+            	    state._fsp--;
+
+
+            	    				current.merge(this_Variable_1);
+            	    			
+
+            	    				afterParserOrEnumRuleCall();
+            	    			
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop6;
+                }
+            } while (true);
+
+            kw=(Token)match(input,23,FOLLOW_2); 
+
+            			current.merge(kw);
+            			newLeafNode(kw, grammarAccess.getConditionAccess().getRightSquareBracketKeyword_2());
+            		
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleCondition"
+
+
     // $ANTLR start "entryRuleFunction"
-    // InternalScheme.g:282:1: entryRuleFunction returns [String current=null] : iv_ruleFunction= ruleFunction EOF ;
+    // InternalScheme.g:334:1: entryRuleFunction returns [String current=null] : iv_ruleFunction= ruleFunction EOF ;
     public final String entryRuleFunction() throws RecognitionException {
         String current = null;
 
@@ -799,8 +951,8 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalScheme.g:282:48: (iv_ruleFunction= ruleFunction EOF )
-            // InternalScheme.g:283:2: iv_ruleFunction= ruleFunction EOF
+            // InternalScheme.g:334:48: (iv_ruleFunction= ruleFunction EOF )
+            // InternalScheme.g:335:2: iv_ruleFunction= ruleFunction EOF
             {
              newCompositeNode(grammarAccess.getFunctionRule()); 
             pushFollow(FOLLOW_1);
@@ -827,76 +979,54 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunction"
-    // InternalScheme.g:289:1: ruleFunction returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '\\'' )? kw= '(' (this_Variable_2= ruleVariable )* kw= ')' ) ;
+    // InternalScheme.g:341:1: ruleFunction returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '(' (this_Variable_1= ruleVariable )* kw= ')' ) ;
     public final AntlrDatatypeRuleToken ruleFunction() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
         Token kw=null;
-        AntlrDatatypeRuleToken this_Variable_2 = null;
+        AntlrDatatypeRuleToken this_Variable_1 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalScheme.g:295:2: ( ( (kw= '\\'' )? kw= '(' (this_Variable_2= ruleVariable )* kw= ')' ) )
-            // InternalScheme.g:296:2: ( (kw= '\\'' )? kw= '(' (this_Variable_2= ruleVariable )* kw= ')' )
+            // InternalScheme.g:347:2: ( (kw= '(' (this_Variable_1= ruleVariable )* kw= ')' ) )
+            // InternalScheme.g:348:2: (kw= '(' (this_Variable_1= ruleVariable )* kw= ')' )
             {
-            // InternalScheme.g:296:2: ( (kw= '\\'' )? kw= '(' (this_Variable_2= ruleVariable )* kw= ')' )
-            // InternalScheme.g:297:3: (kw= '\\'' )? kw= '(' (this_Variable_2= ruleVariable )* kw= ')'
+            // InternalScheme.g:348:2: (kw= '(' (this_Variable_1= ruleVariable )* kw= ')' )
+            // InternalScheme.g:349:3: kw= '(' (this_Variable_1= ruleVariable )* kw= ')'
             {
-            // InternalScheme.g:297:3: (kw= '\\'' )?
-            int alt6=2;
-            int LA6_0 = input.LA(1);
-
-            if ( (LA6_0==22) ) {
-                alt6=1;
-            }
-            switch (alt6) {
-                case 1 :
-                    // InternalScheme.g:298:4: kw= '\\''
-                    {
-                    kw=(Token)match(input,22,FOLLOW_5); 
-
-                    				current.merge(kw);
-                    				newLeafNode(kw, grammarAccess.getFunctionAccess().getApostropheKeyword_0());
-                    			
-
-                    }
-                    break;
-
-            }
-
-            kw=(Token)match(input,23,FOLLOW_6); 
+            kw=(Token)match(input,24,FOLLOW_6); 
 
             			current.merge(kw);
-            			newLeafNode(kw, grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_1());
+            			newLeafNode(kw, grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_0());
             		
-            // InternalScheme.g:309:3: (this_Variable_2= ruleVariable )*
+            // InternalScheme.g:354:3: (this_Variable_1= ruleVariable )*
             loop7:
             do {
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( ((LA7_0>=RULE_STRING && LA7_0<=RULE_SCHEME_ID)||(LA7_0>=12 && LA7_0<=23)) ) {
+                if ( ((LA7_0>=RULE_STRING && LA7_0<=RULE_SCHEME_ID)||(LA7_0>=12 && LA7_0<=22)||LA7_0==24) ) {
                     alt7=1;
                 }
 
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalScheme.g:310:4: this_Variable_2= ruleVariable
+            	    // InternalScheme.g:355:4: this_Variable_1= ruleVariable
             	    {
 
-            	    				newCompositeNode(grammarAccess.getFunctionAccess().getVariableParserRuleCall_2());
+            	    				newCompositeNode(grammarAccess.getFunctionAccess().getVariableParserRuleCall_1());
             	    			
             	    pushFollow(FOLLOW_6);
-            	    this_Variable_2=ruleVariable();
+            	    this_Variable_1=ruleVariable();
 
             	    state._fsp--;
 
 
-            	    				current.merge(this_Variable_2);
+            	    				current.merge(this_Variable_1);
             	    			
 
             	    				afterParserOrEnumRuleCall();
@@ -910,10 +1040,10 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            kw=(Token)match(input,24,FOLLOW_2); 
+            kw=(Token)match(input,25,FOLLOW_2); 
 
             			current.merge(kw);
-            			newLeafNode(kw, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_3());
+            			newLeafNode(kw, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_2());
             		
 
             }
@@ -943,9 +1073,9 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000C00002L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000DFF0F0L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000001FFF0F0L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000001000002L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x00000000015FF0F0L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000001FFF0F0L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00000000037FF0F0L});
 
 }

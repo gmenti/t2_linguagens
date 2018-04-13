@@ -107,18 +107,19 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMathParserRuleCall_1_4 = (RuleCall)cAlternatives_1.eContents().get(4);
 		private final RuleCall cSCHEME_IDTerminalRuleCall_1_5 = (RuleCall)cAlternatives_1.eContents().get(5);
 		private final RuleCall cFunctionParserRuleCall_1_6 = (RuleCall)cAlternatives_1.eContents().get(6);
+		private final RuleCall cConditionParserRuleCall_1_7 = (RuleCall)cAlternatives_1.eContents().get(7);
 		
 		//Variable:
-		//	"not"? (STRING | INT | ID | Boolean | Math | SCHEME_ID | Function);
+		//	"not"? (STRING | INT | ID | Boolean | Math | SCHEME_ID | Function | Condition);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"not"? (STRING | INT | ID | Boolean | Math | SCHEME_ID | Function)
+		//"not"? (STRING | INT | ID | Boolean | Math | SCHEME_ID | Function | Condition)
 		public Group getGroup() { return cGroup; }
 		
 		//"not"?
 		public Keyword getNotKeyword_0() { return cNotKeyword_0; }
 		
-		//STRING | INT | ID | Boolean | Math | SCHEME_ID | Function
+		//STRING | INT | ID | Boolean | Math | SCHEME_ID | Function | Condition
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
 		//STRING
@@ -141,33 +142,55 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Function
 		public RuleCall getFunctionParserRuleCall_1_6() { return cFunctionParserRuleCall_1_6; }
+		
+		//Condition
+		public RuleCall getConditionParserRuleCall_1_7() { return cConditionParserRuleCall_1_7; }
+	}
+	public class ConditionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.Condition");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cVariableParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//Condition:
+		//	'[' Variable* ']';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'[' Variable* ']'
+		public Group getGroup() { return cGroup; }
+		
+		//'['
+		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
+		
+		//Variable*
+		public RuleCall getVariableParserRuleCall_1() { return cVariableParserRuleCall_1; }
+		
+		//']'
+		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
 	}
 	public class FunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.Scheme.Function");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cApostropheKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final RuleCall cVariableParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
-		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cVariableParserRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//Function:
-		//	"'"? '(' Variable* ')';
+		//	'(' Variable* ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"'"? '(' Variable* ')'
+		//'(' Variable* ')'
 		public Group getGroup() { return cGroup; }
 		
-		//"'"?
-		public Keyword getApostropheKeyword_0() { return cApostropheKeyword_0; }
-		
 		//'('
-		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 		
 		//Variable*
-		public RuleCall getVariableParserRuleCall_2() { return cVariableParserRuleCall_2; }
+		public RuleCall getVariableParserRuleCall_1() { return cVariableParserRuleCall_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 	
 	
@@ -176,6 +199,7 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 	private final BooleanElements pBoolean;
 	private final MathElements pMath;
 	private final VariableElements pVariable;
+	private final ConditionElements pCondition;
 	private final FunctionElements pFunction;
 	
 	private final Grammar grammar;
@@ -192,6 +216,7 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		this.pBoolean = new BooleanElements();
 		this.pMath = new MathElements();
 		this.pVariable = new VariableElements();
+		this.pCondition = new ConditionElements();
 		this.pFunction = new FunctionElements();
 	}
 	
@@ -259,7 +284,7 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Variable:
-	//	"not"? (STRING | INT | ID | Boolean | Math | SCHEME_ID | Function);
+	//	"not"? (STRING | INT | ID | Boolean | Math | SCHEME_ID | Function | Condition);
 	public VariableElements getVariableAccess() {
 		return pVariable;
 	}
@@ -268,8 +293,18 @@ public class SchemeGrammarAccess extends AbstractGrammarElementFinder {
 		return getVariableAccess().getRule();
 	}
 	
+	//Condition:
+	//	'[' Variable* ']';
+	public ConditionElements getConditionAccess() {
+		return pCondition;
+	}
+	
+	public ParserRule getConditionRule() {
+		return getConditionAccess().getRule();
+	}
+	
 	//Function:
-	//	"'"? '(' Variable* ')';
+	//	'(' Variable* ')';
 	public FunctionElements getFunctionAccess() {
 		return pFunction;
 	}

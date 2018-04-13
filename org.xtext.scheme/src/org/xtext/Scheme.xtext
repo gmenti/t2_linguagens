@@ -17,9 +17,13 @@ Math:
 ;
 
 Variable:
-	"not"? (STRING |INT | ID | Boolean | Math | SCHEME_ID | Function)
+	"not"? (STRING |INT | ID | Boolean | Math | SCHEME_ID | Function | Condition)
+;
+
+Condition:
+	'[' Variable* ']'
 ;
 
 Function:
-	"'"? '(' Variable* ')'
+	'(' Variable* ')'
 ;

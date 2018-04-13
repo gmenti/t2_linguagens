@@ -320,7 +320,78 @@ public class SchemeParsingTest {
   public void testFunctionIf() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("(if #t \"This is true\")");
+      _builder.append("(if not #t ");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("\"This is true\" ");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("\"This is false\")");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testFor() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(for ([i 10])");
+      _builder.newLine();
+      _builder.append("  ");
+      _builder.append("(printf \"i=~a\\n\" i))");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void mustNotRecognizeFunctionWithoutCloseTheParantheses() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(i + 10");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      Assert.assertFalse(result.eResource().getErrors().isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void mustNotRecognizeFunctionWithoutCloseTheQuotationMarks() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(if not #t ");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("\"This is true ");
+      _builder.newLine();
+      _builder.append("\t\t\t\t");
+      _builder.append("\"This is false\")");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void mustNotRecognizeAFunctionWithoutOpenParentheses() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("i + 10)");
       _builder.newLine();
       final Model result = this.parseHelper.parse(_builder);
       Assert.assertNotNull(result);

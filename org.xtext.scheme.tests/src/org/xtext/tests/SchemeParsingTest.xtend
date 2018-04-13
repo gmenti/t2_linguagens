@@ -210,10 +210,50 @@ class SchemeParsingTest {
 	@Test
 	def void testFunctionIf() {
 		val result = parseHelper.parse('''
-			(if #t "This is true")
+			(if not #t 
+				"This is true" 
+				"This is false")
 		''')
 		Assert.assertNotNull(result)
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 	}
 	
+	@Test
+		def void testFor() {
+			val result = parseHelper.parse('''
+				(for ([i 10])
+				  (printf "i=~a\n" i))
+			''')
+			Assert.assertNotNull(result)
+			Assert.assertTrue(result.eResource.errors.isEmpty)
+		}
+		
+	@Test
+		def void mustNotRecognizeFunctionWithoutCloseTheParantheses() {
+			val result = parseHelper.parse('''
+				(i + 10
+			''')
+			Assert.assertNotNull(result)
+			Assert.assertFalse(result.eResource.errors.isEmpty)
+		}
+		
+	@Test
+		def void mustNotRecognizeFunctionWithoutCloseTheQuotationMarks() {
+			val result = parseHelper.parse('''
+				(if not #t 
+								"This is true 
+								"This is false")
+			''')
+			Assert.assertNotNull(result)
+			Assert.assertTrue(result.eResource.errors.isEmpty)
+		}
+	
+		@Test
+		def void mustNotRecognizeAFunctionWithoutOpenParentheses() {
+			val result = parseHelper.parse('''
+				i + 10)
+			''')
+			Assert.assertNotNull(result)
+			Assert.assertTrue(result.eResource.errors.isEmpty)
+		}
 }

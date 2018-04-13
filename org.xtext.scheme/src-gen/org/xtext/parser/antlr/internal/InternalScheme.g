@@ -274,7 +274,59 @@ ruleVariable returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 			{
 				afterParserOrEnumRuleCall();
 			}
+			    |
+			{
+				newCompositeNode(grammarAccess.getVariableAccess().getConditionParserRuleCall_1_7());
+			}
+			this_Condition_8=ruleCondition
+			{
+				$current.merge(this_Condition_8);
+			}
+			{
+				afterParserOrEnumRuleCall();
+			}
 		)
+	)
+;
+
+// Entry rule entryRuleCondition
+entryRuleCondition returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getConditionRule()); }
+	iv_ruleCondition=ruleCondition
+	{ $current=$iv_ruleCondition.current.getText(); }
+	EOF;
+
+// Rule Condition
+ruleCondition returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw='['
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getConditionAccess().getLeftSquareBracketKeyword_0());
+		}
+		(
+			{
+				newCompositeNode(grammarAccess.getConditionAccess().getVariableParserRuleCall_1());
+			}
+			this_Variable_1=ruleVariable
+			{
+				$current.merge(this_Variable_1);
+			}
+			{
+				afterParserOrEnumRuleCall();
+			}
+		)*
+		kw=']'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getConditionAccess().getRightSquareBracketKeyword_2());
+		}
 	)
 ;
 
@@ -294,25 +346,18 @@ ruleFunction returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 	leaveRule();
 }:
 	(
-		(
-			kw='\''
-			{
-				$current.merge(kw);
-				newLeafNode(kw, grammarAccess.getFunctionAccess().getApostropheKeyword_0());
-			}
-		)?
 		kw='('
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_1());
+			newLeafNode(kw, grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_0());
 		}
 		(
 			{
-				newCompositeNode(grammarAccess.getFunctionAccess().getVariableParserRuleCall_2());
+				newCompositeNode(grammarAccess.getFunctionAccess().getVariableParserRuleCall_1());
 			}
-			this_Variable_2=ruleVariable
+			this_Variable_1=ruleVariable
 			{
-				$current.merge(this_Variable_2);
+				$current.merge(this_Variable_1);
 			}
 			{
 				afterParserOrEnumRuleCall();
@@ -321,7 +366,7 @@ ruleFunction returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 		kw=')'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_3());
+			newLeafNode(kw, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_2());
 		}
 	)
 ;

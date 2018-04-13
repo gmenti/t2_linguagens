@@ -11,8 +11,12 @@ Boolean:
 	"#t" | "#f" | "0" | "1"
 ;
 
+Math:
+	"+" | "-" | "*" | "/" | "="
+;
+
 Variable:
-	"not"? (INT | ID | Boolean | SCHEME_ID | Function)
+	"not"? (INT | ID | Boolean | Math | SCHEME_ID | Function)
 ;
 
 Function:

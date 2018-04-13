@@ -5,7 +5,8 @@ generate scheme "http://www.xtext.org/Scheme"
 Model:
 	functions+=Function*;
 	
-terminal SCHEME_ID: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-'|'/')*;
+terminal SCHEME_ID: ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'-'|'/')* ;
+
 
 Boolean:
 	"#t" | "#f" | "0" | "1"
@@ -16,9 +17,9 @@ Math:
 ;
 
 Variable:
-	"not"? (INT | ID | Boolean | Math | SCHEME_ID | Function)
+	"not"? (STRING |INT | ID | Boolean | Math | SCHEME_ID | Function)
 ;
 
 Function:
-	"'"? '(' SCHEME_ID Variable* ')'
+	"'"? '(' Variable* ')'
 ;

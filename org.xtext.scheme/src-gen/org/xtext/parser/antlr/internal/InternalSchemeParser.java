@@ -21,9 +21,9 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalSchemeParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_ID", "RULE_SCHEME_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'#t'", "'#f'", "'0'", "'1'", "'+'", "'-'", "'*'", "'/'", "'='", "'not'", "'\\''", "'('", "')'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_INT", "RULE_ID", "RULE_SCHEME_ID", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'#t'", "'#f'", "'0'", "'1'", "'+'", "'-'", "'*'", "'/'", "'='", "'not'", "'\\''", "'('", "')'"
     };
-    public static final int RULE_STRING=7;
+    public static final int RULE_STRING=4;
     public static final int RULE_SL_COMMENT=9;
     public static final int T__19=19;
     public static final int T__15=15;
@@ -33,12 +33,12 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
     public static final int T__12=12;
     public static final int T__13=13;
     public static final int T__14=14;
-    public static final int RULE_SCHEME_ID=6;
+    public static final int RULE_SCHEME_ID=7;
     public static final int EOF=-1;
-    public static final int RULE_ID=5;
+    public static final int RULE_ID=6;
     public static final int RULE_WS=10;
     public static final int RULE_ANY_OTHER=11;
-    public static final int RULE_INT=4;
+    public static final int RULE_INT=5;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=8;
     public static final int T__23=23;
@@ -551,30 +551,31 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVariable"
-    // InternalScheme.g:197:1: ruleVariable returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= 'not' )? (this_INT_1= RULE_INT | this_ID_2= RULE_ID | this_Boolean_3= ruleBoolean | this_Math_4= ruleMath | this_SCHEME_ID_5= RULE_SCHEME_ID | this_Function_6= ruleFunction ) ) ;
+    // InternalScheme.g:197:1: ruleVariable returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction ) ) ;
     public final AntlrDatatypeRuleToken ruleVariable() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
         Token kw=null;
-        Token this_INT_1=null;
-        Token this_ID_2=null;
-        Token this_SCHEME_ID_5=null;
-        AntlrDatatypeRuleToken this_Boolean_3 = null;
+        Token this_STRING_1=null;
+        Token this_INT_2=null;
+        Token this_ID_3=null;
+        Token this_SCHEME_ID_6=null;
+        AntlrDatatypeRuleToken this_Boolean_4 = null;
 
-        AntlrDatatypeRuleToken this_Math_4 = null;
+        AntlrDatatypeRuleToken this_Math_5 = null;
 
-        AntlrDatatypeRuleToken this_Function_6 = null;
+        AntlrDatatypeRuleToken this_Function_7 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalScheme.g:203:2: ( ( (kw= 'not' )? (this_INT_1= RULE_INT | this_ID_2= RULE_ID | this_Boolean_3= ruleBoolean | this_Math_4= ruleMath | this_SCHEME_ID_5= RULE_SCHEME_ID | this_Function_6= ruleFunction ) ) )
-            // InternalScheme.g:204:2: ( (kw= 'not' )? (this_INT_1= RULE_INT | this_ID_2= RULE_ID | this_Boolean_3= ruleBoolean | this_Math_4= ruleMath | this_SCHEME_ID_5= RULE_SCHEME_ID | this_Function_6= ruleFunction ) )
+            // InternalScheme.g:203:2: ( ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction ) ) )
+            // InternalScheme.g:204:2: ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction ) )
             {
-            // InternalScheme.g:204:2: ( (kw= 'not' )? (this_INT_1= RULE_INT | this_ID_2= RULE_ID | this_Boolean_3= ruleBoolean | this_Math_4= ruleMath | this_SCHEME_ID_5= RULE_SCHEME_ID | this_Function_6= ruleFunction ) )
-            // InternalScheme.g:205:3: (kw= 'not' )? (this_INT_1= RULE_INT | this_ID_2= RULE_ID | this_Boolean_3= ruleBoolean | this_Math_4= ruleMath | this_SCHEME_ID_5= RULE_SCHEME_ID | this_Function_6= ruleFunction )
+            // InternalScheme.g:204:2: ( (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction ) )
+            // InternalScheme.g:205:3: (kw= 'not' )? (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction )
             {
             // InternalScheme.g:205:3: (kw= 'not' )?
             int alt4=2;
@@ -598,17 +599,22 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalScheme.g:212:3: (this_INT_1= RULE_INT | this_ID_2= RULE_ID | this_Boolean_3= ruleBoolean | this_Math_4= ruleMath | this_SCHEME_ID_5= RULE_SCHEME_ID | this_Function_6= ruleFunction )
-            int alt5=6;
+            // InternalScheme.g:212:3: (this_STRING_1= RULE_STRING | this_INT_2= RULE_INT | this_ID_3= RULE_ID | this_Boolean_4= ruleBoolean | this_Math_5= ruleMath | this_SCHEME_ID_6= RULE_SCHEME_ID | this_Function_7= ruleFunction )
+            int alt5=7;
             switch ( input.LA(1) ) {
-            case RULE_INT:
+            case RULE_STRING:
                 {
                 alt5=1;
                 }
                 break;
-            case RULE_ID:
+            case RULE_INT:
                 {
                 alt5=2;
+                }
+                break;
+            case RULE_ID:
+                {
+                alt5=3;
                 }
                 break;
             case 12:
@@ -616,7 +622,7 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
             case 14:
             case 15:
                 {
-                alt5=3;
+                alt5=4;
                 }
                 break;
             case 16:
@@ -625,18 +631,18 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
             case 19:
             case 20:
                 {
-                alt5=4;
+                alt5=5;
                 }
                 break;
             case RULE_SCHEME_ID:
                 {
-                alt5=5;
+                alt5=6;
                 }
                 break;
             case 22:
             case 23:
                 {
-                alt5=6;
+                alt5=7;
                 }
                 break;
             default:
@@ -648,64 +654,57 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
             switch (alt5) {
                 case 1 :
-                    // InternalScheme.g:213:4: this_INT_1= RULE_INT
+                    // InternalScheme.g:213:4: this_STRING_1= RULE_STRING
                     {
-                    this_INT_1=(Token)match(input,RULE_INT,FOLLOW_2); 
+                    this_STRING_1=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
-                    				current.merge(this_INT_1);
+                    				current.merge(this_STRING_1);
                     			
 
-                    				newLeafNode(this_INT_1, grammarAccess.getVariableAccess().getINTTerminalRuleCall_1_0());
+                    				newLeafNode(this_STRING_1, grammarAccess.getVariableAccess().getSTRINGTerminalRuleCall_1_0());
                     			
 
                     }
                     break;
                 case 2 :
-                    // InternalScheme.g:221:4: this_ID_2= RULE_ID
+                    // InternalScheme.g:221:4: this_INT_2= RULE_INT
                     {
-                    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_2); 
+                    this_INT_2=(Token)match(input,RULE_INT,FOLLOW_2); 
 
-                    				current.merge(this_ID_2);
+                    				current.merge(this_INT_2);
                     			
 
-                    				newLeafNode(this_ID_2, grammarAccess.getVariableAccess().getIDTerminalRuleCall_1_1());
+                    				newLeafNode(this_INT_2, grammarAccess.getVariableAccess().getINTTerminalRuleCall_1_1());
                     			
 
                     }
                     break;
                 case 3 :
-                    // InternalScheme.g:229:4: this_Boolean_3= ruleBoolean
+                    // InternalScheme.g:229:4: this_ID_3= RULE_ID
                     {
+                    this_ID_3=(Token)match(input,RULE_ID,FOLLOW_2); 
 
-                    				newCompositeNode(grammarAccess.getVariableAccess().getBooleanParserRuleCall_1_2());
-                    			
-                    pushFollow(FOLLOW_2);
-                    this_Boolean_3=ruleBoolean();
-
-                    state._fsp--;
-
-
-                    				current.merge(this_Boolean_3);
+                    				current.merge(this_ID_3);
                     			
 
-                    				afterParserOrEnumRuleCall();
+                    				newLeafNode(this_ID_3, grammarAccess.getVariableAccess().getIDTerminalRuleCall_1_2());
                     			
 
                     }
                     break;
                 case 4 :
-                    // InternalScheme.g:240:4: this_Math_4= ruleMath
+                    // InternalScheme.g:237:4: this_Boolean_4= ruleBoolean
                     {
 
-                    				newCompositeNode(grammarAccess.getVariableAccess().getMathParserRuleCall_1_3());
+                    				newCompositeNode(grammarAccess.getVariableAccess().getBooleanParserRuleCall_1_3());
                     			
                     pushFollow(FOLLOW_2);
-                    this_Math_4=ruleMath();
+                    this_Boolean_4=ruleBoolean();
 
                     state._fsp--;
 
 
-                    				current.merge(this_Math_4);
+                    				current.merge(this_Boolean_4);
                     			
 
                     				afterParserOrEnumRuleCall();
@@ -714,31 +713,51 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalScheme.g:251:4: this_SCHEME_ID_5= RULE_SCHEME_ID
+                    // InternalScheme.g:248:4: this_Math_5= ruleMath
                     {
-                    this_SCHEME_ID_5=(Token)match(input,RULE_SCHEME_ID,FOLLOW_2); 
 
-                    				current.merge(this_SCHEME_ID_5);
+                    				newCompositeNode(grammarAccess.getVariableAccess().getMathParserRuleCall_1_4());
+                    			
+                    pushFollow(FOLLOW_2);
+                    this_Math_5=ruleMath();
+
+                    state._fsp--;
+
+
+                    				current.merge(this_Math_5);
                     			
 
-                    				newLeafNode(this_SCHEME_ID_5, grammarAccess.getVariableAccess().getSCHEME_IDTerminalRuleCall_1_4());
+                    				afterParserOrEnumRuleCall();
                     			
 
                     }
                     break;
                 case 6 :
-                    // InternalScheme.g:259:4: this_Function_6= ruleFunction
+                    // InternalScheme.g:259:4: this_SCHEME_ID_6= RULE_SCHEME_ID
+                    {
+                    this_SCHEME_ID_6=(Token)match(input,RULE_SCHEME_ID,FOLLOW_2); 
+
+                    				current.merge(this_SCHEME_ID_6);
+                    			
+
+                    				newLeafNode(this_SCHEME_ID_6, grammarAccess.getVariableAccess().getSCHEME_IDTerminalRuleCall_1_5());
+                    			
+
+                    }
+                    break;
+                case 7 :
+                    // InternalScheme.g:267:4: this_Function_7= ruleFunction
                     {
 
-                    				newCompositeNode(grammarAccess.getVariableAccess().getFunctionParserRuleCall_1_5());
+                    				newCompositeNode(grammarAccess.getVariableAccess().getFunctionParserRuleCall_1_6());
                     			
                     pushFollow(FOLLOW_2);
-                    this_Function_6=ruleFunction();
+                    this_Function_7=ruleFunction();
 
                     state._fsp--;
 
 
-                    				current.merge(this_Function_6);
+                    				current.merge(this_Function_7);
                     			
 
                     				afterParserOrEnumRuleCall();
@@ -772,7 +791,7 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFunction"
-    // InternalScheme.g:274:1: entryRuleFunction returns [String current=null] : iv_ruleFunction= ruleFunction EOF ;
+    // InternalScheme.g:282:1: entryRuleFunction returns [String current=null] : iv_ruleFunction= ruleFunction EOF ;
     public final String entryRuleFunction() throws RecognitionException {
         String current = null;
 
@@ -780,8 +799,8 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalScheme.g:274:48: (iv_ruleFunction= ruleFunction EOF )
-            // InternalScheme.g:275:2: iv_ruleFunction= ruleFunction EOF
+            // InternalScheme.g:282:48: (iv_ruleFunction= ruleFunction EOF )
+            // InternalScheme.g:283:2: iv_ruleFunction= ruleFunction EOF
             {
              newCompositeNode(grammarAccess.getFunctionRule()); 
             pushFollow(FOLLOW_1);
@@ -808,26 +827,25 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunction"
-    // InternalScheme.g:281:1: ruleFunction returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '\\'' )? kw= '(' this_SCHEME_ID_2= RULE_SCHEME_ID (this_Variable_3= ruleVariable )* kw= ')' ) ;
+    // InternalScheme.g:289:1: ruleFunction returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : ( (kw= '\\'' )? kw= '(' (this_Variable_2= ruleVariable )* kw= ')' ) ;
     public final AntlrDatatypeRuleToken ruleFunction() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
         Token kw=null;
-        Token this_SCHEME_ID_2=null;
-        AntlrDatatypeRuleToken this_Variable_3 = null;
+        AntlrDatatypeRuleToken this_Variable_2 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalScheme.g:287:2: ( ( (kw= '\\'' )? kw= '(' this_SCHEME_ID_2= RULE_SCHEME_ID (this_Variable_3= ruleVariable )* kw= ')' ) )
-            // InternalScheme.g:288:2: ( (kw= '\\'' )? kw= '(' this_SCHEME_ID_2= RULE_SCHEME_ID (this_Variable_3= ruleVariable )* kw= ')' )
+            // InternalScheme.g:295:2: ( ( (kw= '\\'' )? kw= '(' (this_Variable_2= ruleVariable )* kw= ')' ) )
+            // InternalScheme.g:296:2: ( (kw= '\\'' )? kw= '(' (this_Variable_2= ruleVariable )* kw= ')' )
             {
-            // InternalScheme.g:288:2: ( (kw= '\\'' )? kw= '(' this_SCHEME_ID_2= RULE_SCHEME_ID (this_Variable_3= ruleVariable )* kw= ')' )
-            // InternalScheme.g:289:3: (kw= '\\'' )? kw= '(' this_SCHEME_ID_2= RULE_SCHEME_ID (this_Variable_3= ruleVariable )* kw= ')'
+            // InternalScheme.g:296:2: ( (kw= '\\'' )? kw= '(' (this_Variable_2= ruleVariable )* kw= ')' )
+            // InternalScheme.g:297:3: (kw= '\\'' )? kw= '(' (this_Variable_2= ruleVariable )* kw= ')'
             {
-            // InternalScheme.g:289:3: (kw= '\\'' )?
+            // InternalScheme.g:297:3: (kw= '\\'' )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -836,7 +854,7 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalScheme.g:290:4: kw= '\\''
+                    // InternalScheme.g:298:4: kw= '\\''
                     {
                     kw=(Token)match(input,22,FOLLOW_5); 
 
@@ -854,38 +872,31 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
             			current.merge(kw);
             			newLeafNode(kw, grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_1());
             		
-            this_SCHEME_ID_2=(Token)match(input,RULE_SCHEME_ID,FOLLOW_7); 
-
-            			current.merge(this_SCHEME_ID_2);
-            		
-
-            			newLeafNode(this_SCHEME_ID_2, grammarAccess.getFunctionAccess().getSCHEME_IDTerminalRuleCall_2());
-            		
-            // InternalScheme.g:308:3: (this_Variable_3= ruleVariable )*
+            // InternalScheme.g:309:3: (this_Variable_2= ruleVariable )*
             loop7:
             do {
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( ((LA7_0>=RULE_INT && LA7_0<=RULE_SCHEME_ID)||(LA7_0>=12 && LA7_0<=23)) ) {
+                if ( ((LA7_0>=RULE_STRING && LA7_0<=RULE_SCHEME_ID)||(LA7_0>=12 && LA7_0<=23)) ) {
                     alt7=1;
                 }
 
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalScheme.g:309:4: this_Variable_3= ruleVariable
+            	    // InternalScheme.g:310:4: this_Variable_2= ruleVariable
             	    {
 
-            	    				newCompositeNode(grammarAccess.getFunctionAccess().getVariableParserRuleCall_3());
+            	    				newCompositeNode(grammarAccess.getFunctionAccess().getVariableParserRuleCall_2());
             	    			
-            	    pushFollow(FOLLOW_7);
-            	    this_Variable_3=ruleVariable();
+            	    pushFollow(FOLLOW_6);
+            	    this_Variable_2=ruleVariable();
 
             	    state._fsp--;
 
 
-            	    				current.merge(this_Variable_3);
+            	    				current.merge(this_Variable_2);
             	    			
 
             	    				afterParserOrEnumRuleCall();
@@ -902,7 +913,7 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
             kw=(Token)match(input,24,FOLLOW_2); 
 
             			current.merge(kw);
-            			newLeafNode(kw, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_4());
+            			newLeafNode(kw, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_3());
             		
 
             }
@@ -933,9 +944,8 @@ public class InternalSchemeParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000C00002L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000DFF070L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000DFF0F0L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000001FFF070L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000001FFF0F0L});
 
 }

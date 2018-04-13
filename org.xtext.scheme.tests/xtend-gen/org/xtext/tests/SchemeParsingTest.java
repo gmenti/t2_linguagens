@@ -315,4 +315,18 @@ public class SchemeParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
+  
+  @Test
+  public void testFunctionIf() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(if #t \"This is true\")");
+      _builder.newLine();
+      final Model result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+      Assert.assertTrue(result.eResource().getErrors().isEmpty());
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
 }

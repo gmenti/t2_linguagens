@@ -207,4 +207,13 @@ class SchemeParsingTest {
 		Assert.assertTrue(result.eResource.errors.isEmpty)
 	}
 	
+	@Test
+	def void testFunctionIf() {
+		val result = parseHelper.parse('''
+			(if #t "This is true")
+		''')
+		Assert.assertNotNull(result)
+		Assert.assertTrue(result.eResource.errors.isEmpty)
+	}
+	
 }
